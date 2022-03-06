@@ -16,6 +16,7 @@ o.termguicolors = true
 o.wrap = false
 o.scrolloff = 8
 o.sidescrolloff = 8
+o.mouse = "a"
 
 
 
