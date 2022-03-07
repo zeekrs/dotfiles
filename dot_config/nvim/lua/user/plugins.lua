@@ -67,9 +67,9 @@ return packer.startup(function(use)
 
 	--LSP
 	use "neovim/nvim-lspconfig"
-	use "williamboman/nvim-lsp-installer"
   use "p00f/nvim-ts-rainbow"
 	use "JoosepAlviste/nvim-ts-context-commentstring"
+	use "jose-elias-alvarez/null-ls.nvim"
 
 	--TreeSitter
 	use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
