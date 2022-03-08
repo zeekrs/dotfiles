@@ -91,7 +91,10 @@ return packer.startup(function(use)
 	use "kyazdani42/nvim-tree.lua"
 	use "kyazdani42/nvim-web-devicons"
 
+	-- UI
 	use "akinsho/bufferline.nvim"
+	use "nvim-lualine/lualine.nvim"
+
 
 
 
