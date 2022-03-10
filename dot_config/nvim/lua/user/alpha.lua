@@ -21,5 +21,11 @@ dashboard.section.buttons.val = {
 	dashboard.button("c", "  Configuration", ":e ~/.config/nvim/init.lua <CR>"),
 	dashboard.button("q", "  Quit", ":qa<CR>"),
 }
+-- dashboard.section.footer.val = require("alpha.fortune")()
 
-require("alpha").setup(dashboard.opts)
+local handle = io.popen("fortune")
+local fortune = handle:read("*a")
+handle:close()
+dashboard.section.footer.val = fortune
+
+require("alpha").setup(dashboard.config)
