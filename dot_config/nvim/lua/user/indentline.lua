@@ -1,3 +1,14 @@
+vim.g.indent_blankline_buftype_exclude = { "terminal", "nofile" }
+vim.g.indent_blankline_filetype_exclude = {
+	"help",
+	"startify",
+	"dashboard",
+	"packer",
+	"neogitstatus",
+	"NvimTree",
+	"Trouble",
+}
+
 vim.opt.list = true
 vim.opt.listchars:append("space:⋅")
 vim.opt.listchars:append("eol:↴")

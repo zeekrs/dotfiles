@@ -93,6 +93,7 @@ return packer.startup(function(use)
 	-- UI
 	use("akinsho/bufferline.nvim")
 	use("nvim-lualine/lualine.nvim")
+	use("goolord/alpha-nvim")
 
 	use("lukas-reineke/indent-blankline.nvim")
 
