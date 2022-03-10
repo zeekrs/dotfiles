@@ -40,6 +40,7 @@ return packer.startup(function(use)
 	use("wbthomason/packer.nvim") -- Have packer manage itself
 	use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
 	use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
+	use("lewis6991/impatient.nvim")
 
 	-- action
 	use("famiu/bufdelete.nvim")
@@ -75,6 +76,8 @@ return packer.startup(function(use)
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 	use("nvim-telescope/telescope-media-files.nvim")
 
+	use("ahmedkhalf/project.nvim")
+
 	-- Editor
 	use("windwp/nvim-autopairs")
 	use("windwp/nvim-ts-autotag")
@@ -90,6 +93,8 @@ return packer.startup(function(use)
 	-- UI
 	use("akinsho/bufferline.nvim")
 	use("nvim-lualine/lualine.nvim")
+
+	use("lukas-reineke/indent-blankline.nvim")
 
 	use("akinsho/toggleterm.nvim")
 
