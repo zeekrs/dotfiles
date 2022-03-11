@@ -41,7 +41,7 @@ return packer.startup(function(use)
 	use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
 	use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
 	use("lewis6991/impatient.nvim")
-
+	use("folke/which-key.nvim")
 	-- action
 	use("famiu/bufdelete.nvim")
 
@@ -67,7 +67,7 @@ return packer.startup(function(use)
 	use("p00f/nvim-ts-rainbow")
 	use("JoosepAlviste/nvim-ts-context-commentstring")
 	use("jose-elias-alvarez/null-ls.nvim")
-
+	use("folke/trouble.nvim")
 	--TreeSitter
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 

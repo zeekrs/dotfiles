@@ -6,6 +6,8 @@ telescope.load_extension("projects")
 
 local actions = require("telescope.actions")
 
+local trouble = require("trouble.providers.telescope")
+
 require("telescope").setup({
 	defaults = {
 		-- Default configuration for telescope goes here:
@@ -35,6 +37,7 @@ require("telescope").setup({
 				["<C-l>"] = actions.complete_tag,
 				["<C-_>"] = actions.which_key, -- keys from pressing <C-/>
 				["<C-w>"] = { "<c-s-w>", type = "command" },
+				["<c-t>"] = trouble.open_with_trouble,
 			},
 
 			n = {
@@ -67,6 +70,7 @@ require("telescope").setup({
 				["<PageDown>"] = actions.results_scrolling_down,
 
 				["?"] = actions.which_key,
+				["<c-t>"] = trouble.open_with_trouble,
 			},
 		},
 	},
