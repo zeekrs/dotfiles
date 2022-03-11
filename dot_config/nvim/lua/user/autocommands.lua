@@ -15,6 +15,7 @@ vim.cmd([[
     autocmd!
     autocmd FileType markdown setlocal wrap
     autocmd FileType markdown setlocal spell
+    autocmd FileType markdown nnoremap <silent> <buffer> <c-p> :MarkdownPreviewToggle<CR> 
   augroup end
   augroup _auto_resize
     autocmd!
