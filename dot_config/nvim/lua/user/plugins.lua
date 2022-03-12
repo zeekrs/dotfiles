@@ -46,8 +46,10 @@ return packer.startup(function(use)
 	use("famiu/bufdelete.nvim")
 
 	-- Colorschema
-	use("olimorris/onedarkpro.nvim")
 	use("folke/tokyonight.nvim")
+	use("EdenEast/nightfox.nvim")
+	use("rebelot/kanagawa.nvim")
+	use("projekt0n/github-nvim-theme")
 
 	-- cmp plugins
 	use("hrsh7th/nvim-cmp") -- The completion plugin
