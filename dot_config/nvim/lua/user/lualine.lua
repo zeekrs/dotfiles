@@ -1,5 +1,4 @@
 local colors = require("kanagawa.colors").setup()
-
 local conditions = {
 	buffer_not_empty = function()
 		return vim.fn.empty(vim.fn.expand("%:t")) ~= 1
@@ -43,6 +42,19 @@ local function diff_source()
 			removed = gitsigns.removed,
 		}
 	end
+end
+local function null_ls_support_source_names(fileType, method)
+	local sources = require("null-ls.sources")
+	local availableSources = sources.get_available(fileType)
+	local source_names = {}
+	for _, source in ipairs(availableSources) do
+		for _method in pairs(source.methods) do
+			if method == _method then
+				table.insert(source_names, source.name)
+			end
+		end
+	end
+	return source_names
 end
 
 local config = {
@@ -164,13 +176,27 @@ ins_right({
 		if next(clients) == nil then
 			return msg
 		end
+		local client_names = {}
+		-- add client
 		for _, client in ipairs(clients) do
 			local filetypes = client.config.filetypes
-			if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-				return client.name
+			if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 and client.name ~= "null-ls" then
+				table.insert(client_names, client.name)
 			end
 		end
-		return msg
+
+		-- null-ls support
+		local null_ls = require("null-ls")
+
+		-- add formatter
+		local supported_formaters = null_ls_support_source_names(buf_ft, null_ls.methods.FORMATTING)
+		vim.list_extend(client_names, supported_formaters)
+
+		-- add linters
+		local supported_linters = null_ls_support_source_names(buf_ft, null_ls.methods.DIAGNOSTICS)
+		vim.list_extend(client_names, supported_linters)
+
+		return "[" .. table.concat(client_names, " ") .. "]"
 	end,
 	icon = " LSP:",
 	color = { gui = "bold" },

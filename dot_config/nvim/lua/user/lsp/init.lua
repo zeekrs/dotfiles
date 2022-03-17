@@ -66,6 +66,7 @@ local on_attach = function(client, bufnr)
 	-- Disable default formatting
 	if client.name == "tsserver" then
 		client.resolved_capabilities.document_formatting = false
+		client.resolved_capabilities.document_range_formatting = false
 	end
 
 	lsp_keymaps(bufnr)
