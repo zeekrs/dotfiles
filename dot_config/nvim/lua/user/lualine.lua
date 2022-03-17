@@ -1,5 +1,10 @@
 local colors = require("kanagawa.colors").setup()
 
+local status_line_bg = colors.bg_light0
+local active_fg = colors.springViolet1
+local inactive_fg = colors.boatYellow1
+local tree_fg = colors.springGreen
+
 local conditions = {
 	buffer_not_empty = function()
 		return vim.fn.empty(vim.fn.expand("%:t")) ~= 1
@@ -42,7 +47,7 @@ local start_block = {
 		return "▊"
 	end,
 	padding = { left = 0, right = 1 }, -- We don't need space before this
-	color = { bg = colors.bg_light0 },
+	color = { bg = status_line_bg },
 }
 
 local mode = {
@@ -50,13 +55,13 @@ local mode = {
 		return ""
 	end,
 	padding = { right = 1 },
-	color = { bg = colors.bg_light0 },
+	color = { bg = status_line_bg },
 }
 
 local filename = {
 	"filename",
 	cond = conditions.buffer_not_empty,
-	color = { gui = "bold", bg = colors.bg_light0 },
+	color = { gui = "bold", bg = status_line_bg },
 }
 
 local location = { "location", color = { gui = "bold" } }
@@ -82,38 +87,53 @@ local branch = {
 	cond = conditions.hide_in_width,
 }
 
+local lsp_client_names = function()
+	local client_names = {}
+	local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
+	local clients = vim.lsp.get_active_clients()
+	if next(clients) == nil then
+		return client_names
+	end
+
+	-- add client
+	for _, client in ipairs(clients) do
+		local filetypes = client.config.filetypes
+		if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 and client.name ~= "null-ls" then
+			table.insert(client_names, client.name)
+		end
+	end
+
+	-- null-ls support
+	local null_ls = require("null-ls")
+
+	-- add formatter
+	local supported_formaters = null_ls_support_source_names(buf_ft, null_ls.methods.FORMATTING)
+	vim.list_extend(client_names, supported_formaters)
+
+	-- add linters
+	local supported_linters = null_ls_support_source_names(buf_ft, null_ls.methods.DIAGNOSTICS)
+	vim.list_extend(client_names, supported_linters)
+
+	return client_names
+end
+
 local lsp = {
 	function()
-		local msg = "No Active Lsp"
-		local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
-		local clients = vim.lsp.get_active_clients()
-		if next(clients) == nil then
-			return msg
+		local client_names = lsp_client_names()
+		if next(client_names) == nil then
+			return "[" .. "inactive" .. "]"
 		end
-		local client_names = {}
-		-- add client
-		for _, client in ipairs(clients) do
-			local filetypes = client.config.filetypes
-			if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 and client.name ~= "null-ls" then
-				table.insert(client_names, client.name)
-			end
-		end
-
-		-- null-ls support
-		local null_ls = require("null-ls")
-
-		-- add formatter
-		local supported_formaters = null_ls_support_source_names(buf_ft, null_ls.methods.FORMATTING)
-		vim.list_extend(client_names, supported_formaters)
-
-		-- add linters
-		local supported_linters = null_ls_support_source_names(buf_ft, null_ls.methods.DIAGNOSTICS)
-		vim.list_extend(client_names, supported_linters)
-
 		return "[" .. table.concat(client_names, " ") .. "]"
 	end,
 	icon = " LSP:",
-	color = { gui = "bold" },
+	color = function()
+		local client_names = lsp_client_names()
+
+		if next(client_names) == nil then
+			return { fg = inactive_fg }
+		end
+		return { gui = "bold", fg = active_fg }
+	end,
 	cond = conditions.hide_in_width,
 }
 
@@ -125,7 +145,9 @@ local treesitter = {
 		end
 		return ""
 	end,
-	color = { fg = colors.springGreen },
+	color = {
+		fg = tree_fg,
+	},
 	cond = conditions.hide_in_width,
 }
 
@@ -133,18 +155,23 @@ local filesize = {
 	"filesize",
 	cond = conditions.buffer_not_empty,
 }
+local filetype = {
+	"filetype",
+	fmt = string.upper,
+	color = { bg = status_line_bg, gui = "bold" },
+}
 local encoding = {
 	"o:encoding", -- option component same as &encoding in viml
 	fmt = string.upper, -- I'm not sure why it's upper case either ;)
 	cond = conditions.hide_in_width,
-	color = { bg = colors.bg_light0, gui = "bold" },
+	color = { bg = status_line_bg, gui = "bold" },
 }
 
 local fileformat = {
 	"fileformat",
 	fmt = string.upper,
 	icons_enabled = false, -- I think icons are cool but Eviline doesn't have them. sigh
-	color = { bg = colors.bg_light0, gui = "bold" },
+	color = { bg = status_line_bg, gui = "bold" },
 }
 
 -- end with  block
@@ -154,7 +181,7 @@ local end_block = {
 	end,
 	padding = { left = 1, right = 0 }, -- We don't need space before this
 
-	color = { bg = colors.bg_light0 },
+	color = { bg = status_line_bg },
 }
 
 require("lualine").setup({
@@ -163,15 +190,15 @@ require("lualine").setup({
 		theme = "auto",
 		component_separators = { left = "", right = "" },
 		section_separators = { left = "", right = "" },
-		disabled_filetypes = { "NvimTree" },
+		disabled_filetypes = { "NvimTree", "alpha" },
 		always_divide_middle = true,
 	},
 	sections = {
 		lualine_a = {},
 		lualine_b = { start_block, mode, filename },
-		lualine_c = { location, progress, diagnostics },
+		lualine_c = { progress, location, diagnostics },
 		lualine_x = { diff, branch, lsp, treesitter, filesize },
-		lualine_y = { encoding, fileformat, end_block },
+		lualine_y = { encoding, fileformat, filetype, end_block },
 		lualine_z = {},
 	},
 	inactive_sections = {
