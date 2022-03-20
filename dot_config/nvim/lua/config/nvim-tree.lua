@@ -1,9 +1,5 @@
 -- following options are the default
 -- each of these are documented in `:help nvim-tree.OPTION_NAME`
-
--- proejct.nvim
-vim.g.nvim_tree_respect_buf_cwd = 1
-
 vim.g.nvim_tree_icons = {
 	default = "",
 	symlink = "",
@@ -24,20 +20,16 @@ vim.g.nvim_tree_icons = {
 		empty = "",
 		empty_open = "",
 		symlink = "",
-		symlink_open = "",
 	},
 }
 
 local tree_cb = require("nvim-tree.config").nvim_tree_callback
 
 require("nvim-tree").setup({
-
 	disable_netrw = true,
 	hijack_netrw = true,
 	open_on_setup = false,
 	ignore_ft_on_setup = {
-		"startify",
-		"dashboard",
 		"alpha",
 	},
 	auto_close = true,
@@ -51,7 +43,7 @@ require("nvim-tree").setup({
 	diagnostics = {
 		enable = true,
 		icons = {
-			hint = "",
+			hint = "",
 			info = "",
 			warning = "",
 			error = "",
@@ -61,6 +53,14 @@ require("nvim-tree").setup({
 		enable = true,
 		update_cwd = true,
 		ignore_list = {},
+	},
+	system_open = {
+		cmd = nil,
+		args = {},
+	},
+	filters = {
+		dotfiles = false,
+		custom = {},
 	},
 	git = {
 		enable = true,
@@ -83,6 +83,10 @@ require("nvim-tree").setup({
 		},
 		number = false,
 		relativenumber = false,
+	},
+	trash = {
+		cmd = "trash",
+		require_confirm = true,
 	},
 	quit_on_open = 0,
 	git_hl = 1,

@@ -59,7 +59,7 @@ require("bufferline").setup({
 		--   end
 		-- end,
 		offsets = {
-			{ filetype = "NvimTree", text = "File Explorer", highlight = "Directory", text_align = "left" },
+			{ filetype = "NvimTree", text = "", highlight = "Directory", text_align = "left", padding = 1 },
 		},
 		show_buffer_icons = true,
 		show_buffer_close_icons = true,

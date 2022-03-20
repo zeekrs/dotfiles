@@ -1,8 +1,11 @@
 local telescope = require("telescope")
 
+local icons = require("icons")
+
 telescope.load_extension("fzf")
 telescope.load_extension("media_files")
 telescope.load_extension("projects")
+telescope.load_extension("ui-select")
 
 local actions = require("telescope.actions")
 
@@ -10,6 +13,10 @@ local trouble = require("trouble.providers.telescope")
 
 require("telescope").setup({
 	defaults = {
+		prompt_prefix = icons.ui.Telescope .. " ",
+		selection_caret = " ",
+		path_display = { "smart" },
+
 		-- Default configuration for telescope goes here:
 		-- config_key = value,
 		mappings = {
@@ -96,5 +103,11 @@ require("telescope").setup({
 			filetypes = { "png", "webp", "jpg", "jpeg" },
 			find_cmd = "rg", -- find command (defaults to `fd`)
 		},
+	},
+	["ui-select"] = {
+		require("telescope.themes").get_dropdown({
+			previewer = false,
+			-- even more opts
+		}),
 	},
 })
