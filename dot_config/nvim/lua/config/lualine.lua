@@ -5,6 +5,7 @@ local active_fg = colors.springViolet1
 local inactive_fg = colors.boatYellow1
 local tree_fg = colors.springGreen
 
+local nvim_gps = require("nvim-gps")
 local conditions = {
 	buffer_not_empty = function()
 		return vim.fn.empty(vim.fn.expand("%:t")) ~= 1
@@ -67,6 +68,11 @@ local filename = {
 local location = { "location", color = { gui = "bold" } }
 
 local progress = { "progress" }
+
+local gps = {
+	nvim_gps.get_location,
+	cond = nvim_gps.is_available,
+}
 
 local diagnostics = {
 	"diagnostics",
@@ -173,7 +179,6 @@ local fileformat = {
 	icons_enabled = false, -- I think icons are cool but Eviline doesn't have them. sigh
 	color = { bg = status_line_bg, gui = "bold" },
 }
-
 -- end with  block
 local end_block = {
 	function()
@@ -196,7 +201,7 @@ require("lualine").setup({
 	sections = {
 		lualine_a = {},
 		lualine_b = { start_block, mode, filename },
-		lualine_c = { progress, location, diagnostics },
+		lualine_c = { progress, location, diagnostics, gps },
 		lualine_x = { diff, branch, lsp, treesitter, filesize },
 		lualine_y = { encoding, fileformat, filetype, end_block },
 		lualine_z = {},
