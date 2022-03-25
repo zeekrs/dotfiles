@@ -60,6 +60,7 @@ cmp.setup({
 			vim_item.menu = ({
 				nvim_lsp = "[LSP]",
 				cmp_tabnine = "[TabNine]",
+				copilot = "[Copilot]",
 				nvim_lua = "[Nvim]",
 				luasnip = "[Snippet]",
 				buffer = "[Buffer]",
@@ -74,6 +75,7 @@ cmp.setup({
 		{ name = "nvim_lsp_signature_help" },
 		{ name = "nvim_lua" },
 		{ name = "luasnip" }, -- For luasnip users.
+		{ name = "copilot" },
 		{ name = "cmp_tabnine" },
 		{ name = "path" },
 		{ name = "emoji" },

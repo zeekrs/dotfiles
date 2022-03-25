@@ -68,6 +68,8 @@ return packer.startup(function(use)
 			{ "hrsh7th/cmp-emoji", after = "nvim-cmp" },
 			{ "hrsh7th/cmp-nvim-lua", after = "nvim-cmp" },
 			{ "tzachar/cmp-tabnine", after = "nvim-cmp", run = "./install.sh" },
+			{ "github/copilot.vim", after = "nvim-cmp" },
+			{ "hrsh7th/cmp-copilot", after = "nvim-cmp" },
 			{ "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" },
 			{ "hrsh7th/cmp-nvim-lsp-document-symbol", after = "nvim-cmp" },
 		},
