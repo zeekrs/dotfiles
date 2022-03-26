@@ -68,14 +68,12 @@ return packer.startup(function(use)
 			{ "hrsh7th/cmp-emoji", after = "nvim-cmp" },
 			{ "hrsh7th/cmp-nvim-lua", after = "nvim-cmp" },
 			{ "tzachar/cmp-tabnine", after = "nvim-cmp", run = "./install.sh" },
-			{ "github/copilot.vim", after = "nvim-cmp" },
-			{ "hrsh7th/cmp-copilot", after = "nvim-cmp" },
 			{ "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" },
 			{ "hrsh7th/cmp-nvim-lsp-document-symbol", after = "nvim-cmp" },
 		},
 		config = [[require('config.completion')]],
 	})
-
+	use({ "github/copilot.vim", config = [[require('config.copilot')]] }) -- Autopairs, integrates with both cmp and treesitter
 	use({ "windwp/nvim-autopairs", config = [[require('config.autopairs')]] }) -- Autopairs, integrates with both cmp and treesitter
 
 	-- LSP
@@ -85,8 +83,10 @@ return packer.startup(function(use)
 	use("jose-elias-alvarez/null-ls.nvim") -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua.
 	use("folke/trouble.nvim") -- A pretty list for showing diagnostics, references, telescope results, quickfixand location lists to help you solve all the trouble your code is causing.
 	use("b0o/SchemaStore.nvim") --json-ls schema store
-	use({ "filipdutescu/renamer.nvim", config = [[require('config.renamer')]] }) -- renaming UI for Neovim pover by lsp
 	use({ "simrat39/symbols-outline.nvim", config = [[require('config.symbols-outline')]] })
+
+	-- Java
+	use("mfussenegger/nvim-jdtls")
 
 	--Threesitter
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate", config = [[require('config.treesitter')]] })
@@ -96,6 +96,8 @@ return packer.startup(function(use)
 	-- use("romgrk/nvim-treesitter-context")
 	use({ "mizlan/iswap.nvim", config = [[require('config.iswap')]] })
 	use("JoosepAlviste/nvim-ts-context-commentstring")
+
+	use({ "nvim-orgmode/orgmode", config = [[require('config.orgmode')]] })
 
 	--Comment
 	use({ "numToStr/Comment.nvim", config = [[require('config.comment')]] })

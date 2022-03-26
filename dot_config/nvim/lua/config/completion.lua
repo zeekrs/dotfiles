@@ -11,6 +11,7 @@ local has_words_before = function()
 	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
+-- TODO  niubi
 cmp.setup({
 	snippet = {
 		expand = function(args)
@@ -60,12 +61,12 @@ cmp.setup({
 			vim_item.menu = ({
 				nvim_lsp = "[LSP]",
 				cmp_tabnine = "[TabNine]",
-				copilot = "[Copilot]",
 				nvim_lua = "[Nvim]",
 				luasnip = "[Snippet]",
 				buffer = "[Buffer]",
 				path = "[Path]",
 				emoji = "[Emoji]",
+				orgmode = "[Orgmode]",
 			})[entry.source.name]
 			return vim_item
 		end,
@@ -75,10 +76,10 @@ cmp.setup({
 		{ name = "nvim_lsp_signature_help" },
 		{ name = "nvim_lua" },
 		{ name = "luasnip" }, -- For luasnip users.
-		{ name = "copilot" },
 		{ name = "cmp_tabnine" },
 		{ name = "path" },
 		{ name = "emoji" },
+		{ name = "orgmode" },
 	}, {
 		{ name = "buffer" },
 	}),
