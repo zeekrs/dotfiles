@@ -29,4 +29,5 @@ vim.cmd([[
     autocmd!
     autocmd VimEnter * hi link illuminatedWord LspReferenceText
   augroup END
+
 ]])

@@ -67,6 +67,7 @@ cmp.setup({
 				path = "[Path]",
 				emoji = "[Emoji]",
 				orgmode = "[Orgmode]",
+				crates = "[Crates]",
 			})[entry.source.name]
 			return vim_item
 		end,
@@ -80,6 +81,7 @@ cmp.setup({
 		{ name = "path" },
 		{ name = "emoji" },
 		{ name = "orgmode" },
+		{ name = "crates" },
 	}, {
 		{ name = "buffer" },
 	}),

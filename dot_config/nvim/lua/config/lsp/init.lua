@@ -1,4 +1,7 @@
-require("config.lsp.lsp-config")
 require("config.lsp.lsp-signature")
+require("config.lsp.lsp-installer")
 require("config.lsp.null-ls")
 require("config.lsp.trouble")
+require("config.lsp.lsp-config").setup()
+require("config.lsp.rust-tools")
+require("config.lsp.crates")

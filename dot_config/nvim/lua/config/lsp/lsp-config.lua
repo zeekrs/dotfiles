@@ -1,33 +1,37 @@
-local icons = require("icons")
-local signs = {
-	Error = icons.diagnostics.Error,
-	Warn = icons.diagnostics.Warning,
-	Hint = icons.diagnostics.Hint,
-	Info = icons.diagnostics.Info,
-}
+local M = {}
 
-for type, icon in pairs(signs) do
-	local hl = "DiagnosticSign" .. type
-	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+M.setup = function()
+	local icons = require("icons")
+	local signs = {
+		Error = icons.diagnostics.Error,
+		Warn = icons.diagnostics.Warning,
+		Hint = icons.diagnostics.Hint,
+		Info = icons.diagnostics.Info,
+	}
+
+	for type, icon in pairs(signs) do
+		local hl = "DiagnosticSign" .. type
+		vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+	end
+
+	vim.diagnostic.config({
+		virtual_text = false,
+		signs = true,
+		underline = true,
+		update_in_insert = true,
+		severity_sort = true,
+		float = {
+			focusable = true,
+			style = "minimal",
+			border = "rounded",
+			source = "always",
+			header = "",
+			prefix = "",
+		},
+	})
 end
 
-vim.diagnostic.config({
-	virtual_text = false,
-	signs = true,
-	underline = true,
-	update_in_insert = true,
-	severity_sort = true,
-	float = {
-		focusable = true,
-		style = "minimal",
-		border = "rounded",
-		source = "always",
-		header = "",
-		prefix = "",
-	},
-})
-
-local handlers = {
+M.handlers = {
 	["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
 	["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
 }
@@ -38,7 +42,7 @@ local function lsp_highlight_document(client)
 	end
 end
 
-local function lsp_keymaps(bufnr)
+local function lsp_keymaps(bufnr, client)
 	-- Mappings.
 	-- See `:help vim.diagnostic.*` for documentation on any of the below functions
 	local opts = { noremap = true, silent = true }
@@ -50,7 +54,16 @@ local function lsp_keymaps(bufnr)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+	if client.name == "rust_analyzer" then
+		vim.api.nvim_buf_set_keymap(
+			bufnr,
+			"n",
+			"K",
+			"<cmd>lua require'rust-tools.hover_actions'.hover_actions()<CR>",
+			opts
+		)
+	end
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
 
 	--  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
@@ -65,39 +78,25 @@ local function lsp_keymaps(bufnr)
 	vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
 end
 
-local function on_attach(client, bufnr)
+M.on_attach = function(client, bufnr)
 	if client.name == "tsserver" then
 		client.resolved_capabilities.document_formatting = false
 		client.resolved_capabilities.document_range_formatting = false
 	end
 
-	lsp_keymaps(bufnr)
+	if client.name == "jdt.ls" then
+		require("jdtls").setup_dap({ hotcodereplace = "auto" })
+		require("jdtls.dap").setup_dap_main_class_configs()
+	end
+
+	lsp_keymaps(bufnr, client)
 	lsp_highlight_document(client)
 end
 
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-local servers = { "sumneko_lua", "jsonls", "rust_analyzer", "tsserver" }
+M.capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
-for _, lsp in pairs(servers) do
-	-- default opts
-	local opts = {
-		on_attach = on_attach,
-		handlers = handlers,
-		capabilities = capabilities,
-		flags = {
-			-- This will be the default in neovim 0.7+
-			debounce_text_changes = 150,
-		},
-	}
-
-	local loaded, setting = pcall(require, "config.lsp.settings." .. lsp)
-
-	if loaded then
-		opts = vim.tbl_deep_extend("force", setting, opts)
-	end
-
-	require("lspconfig")[lsp].setup(opts)
-end
+return M

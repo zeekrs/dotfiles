@@ -73,18 +73,22 @@ return packer.startup(function(use)
 		},
 		config = [[require('config.completion')]],
 	})
+
 	use({ "github/copilot.vim", config = [[require('config.copilot')]] }) -- Autopairs, integrates with both cmp and treesitter
 	use({ "windwp/nvim-autopairs", config = [[require('config.autopairs')]] }) -- Autopairs, integrates with both cmp and treesitter
 
 	-- LSP
 	use({ "neovim/nvim-lspconfig", config = [[require('config.lsp')]] })
+	use({ "williamboman/nvim-lsp-installer" }) --Neovim plugin that allows you to seamlessly install LSP servers locally
 	use({ "ray-x/lsp_signature.nvim" }) --Show function signature when you type
 	use({ "RRethy/vim-illuminate" }) -- automatically highlighting other uses of the current word under the cursor
 	use("jose-elias-alvarez/null-ls.nvim") -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua.
 	use("folke/trouble.nvim") -- A pretty list for showing diagnostics, references, telescope results, quickfixand location lists to help you solve all the trouble your code is causing.
 	use("b0o/SchemaStore.nvim") --json-ls schema store
 	use({ "simrat39/symbols-outline.nvim", config = [[require('config.symbols-outline')]] })
-
+	--Rust
+	use("simrat39/rust-tools.nvim")
+	use("saecki/crates.nvim")
 	-- Java
 	use("mfussenegger/nvim-jdtls")
 
@@ -147,6 +151,14 @@ return packer.startup(function(use)
 
 	-- Debugger
 	use({ "michaelb/sniprun", run = "bash ./install.sh", config = [[require('config.sniprun')]] })
+
+	use({
+		"mfussenegger/nvim-dap",
+		"theHamsta/nvim-dap-virtual-text",
+		"rcarriga/nvim-dap-ui",
+		"nvim-telescope/telescope-dap.nvim",
+		config = [[require('config.debugger')]],
+	})
 
 	--Markdown
 	use({
