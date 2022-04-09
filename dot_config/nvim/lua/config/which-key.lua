@@ -158,7 +158,7 @@ local mappings = {
 
 	g = {
 		name = "Git",
-		g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
+		g = { "<cmd>lua _lazygit_toggle()<CR>", "Lazygit" },
 		j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
 		k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
 		l = { "<cmd>GitBlameToggle<cr>", "Blame" },
@@ -211,7 +211,7 @@ local mappings = {
 		l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
 		o = { "<cmd>SymbolsOutline<cr>", "Outline" },
 		q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
-		r = { '<cmd>lua require("renamer").rename()<cr>', "Rename" },
+		r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
 		R = { "<cmd>TroubleToggle lsp_references<cr>", "References" },
 		s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
 		S = {
@@ -252,10 +252,10 @@ local mappings = {
 		["2"] = { ":2ToggleTerm<cr>", "2" },
 		["3"] = { ":3ToggleTerm<cr>", "3" },
 		["4"] = { ":4ToggleTerm<cr>", "4" },
-		n = { "<cmd>lua _NODE_TOGGLE()<cr>", "Node" },
-		u = { "<cmd>lua _NCDU_TOGGLE()<cr>", "NCDU" },
-		t = { "<cmd>lua _HTOP_TOGGLE()<cr>", "Htop" },
-		p = { "<cmd>lua _PYTHON_TOGGLE()<cr>", "Python" },
+		n = { "<cmd>lua _node_toggle()<cr>", "Node" },
+		u = { "<cmd>lua _ncdu_toggle()<cr>", "NCDU" },
+		t = { "<cmd>lua _htop_toggle()<cr>", "Htop" },
+		p = { "<cmd>lua _python_toggle()<cr>", "Python" },
 		f = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
 		h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
 		v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },

@@ -142,7 +142,7 @@ return packer.startup(function(use)
 	use({ "monaqa/dial.nvim", config = [[require('config.dial')]] }) --  Extended increment/decrement plugin for Neovim
 	use({ "norcalli/nvim-colorizer.lua", config = [[require('config.colorizer')]] }) --  A high-performance color highlighter for Neovim
 	use({ "folke/zen-mode.nvim", config = [[require('config.zen-mode')]] }) --  opens the current buffer in a new full-screen floating window
-	use({ "karb94/neoscroll.nvim", config = [[require('config.neoscroll')]] }) --  a smooth scrolling neovim plugin written in lua
+	--use({ "karb94/neoscroll.nvim", config = [[require('config.neoscroll')]] }) --  a smooth scrolling neovim plugin written in lua
 	use({ "folke/todo-comments.nvim", config = [[require('config.todo-comments')]] }) -- highlight and search for todo comments like TODO, HACK, BUG in your code base.
 	use({ "tversteeg/registers.nvim", config = [[require('config.registers')]] }) -- Show register content when you try to access it in Neovim. Written in Lua.
 
