@@ -1,5 +1,7 @@
 # instead default
+alias vi=nvim
 alias vim=nvim
+alias vimdiff="nvim -d"
 
 alias ls='exa --color=always --group-directories-first'
 alias la='exa -a --color=always --group-directories-first'
