@@ -1,6 +1,6 @@
-# dotfiles
+# zeekrs' dotfiles
 
-## dot files management by [chezmoi](https://chezmoi.io/)
+## zeekrs' dot files - management by [chezmoi](https://chezmoi.io/)
 
 ### tool set
 
