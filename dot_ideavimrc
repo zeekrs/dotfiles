@@ -1,0 +1,153 @@
+
+" ================================================================================================
+" = Leader Keymaps =====================================
+" ================================================================================================
+" leaderkey
+let mapleader=" "
+
+" ================================================================================================
+" = Extensions =====================================
+" ================================================================================================
+Plug 'easymotion/vim-easymotion'
+Plug 'tpope/vim-surround'
+Plug 'preservim/nerdtree'
+Plug 'tpope/vim-commentary'
+
+let g:EasyMotion_override_acejump = 0
+
+nmap s <Plug>(easymotion-s2)
+
+
+
+""<ll>f{char}    |  <Plug>(easymotion-f) |  mapped to fn
+""<ll>F{char}    |  <Plug>(easymotion-F) |  mapped to Fn
+""<ll>t{char}    |  <Plug>(easymotion-t) |  mapped to tn
+""<ll>T{char}    |  <Plug>(easymotion-T) |  mapped to Tn
+
+" ================================================================================================
+" = Basic settings =====================================
+" ================================================================================================
+set clipboard+=unnamed
+set ignorecase
+set scrolloff=30
+set history=200
+
+set number
+set relativenumber
+
+set incsearch
+set hlsearch
+set keep-english-in-normal
+
+" ================================================================================================
+" = No Leader Keymaps =====================================
+" ================================================================================================
+nmap ge <action>(GotoNextError)
+nmap gt <action>(GotoTest)
+nmap gm <action>(MethodUp)
+" last changed in current buffer(file)
+nmap gI <action>(GotoImplementation)
+
+" bookmark
+let g:WhichKeyDesc_Mark = "<leader>m Mark"
+nmap ma <action>(ToggleBookmark)
+
+nmap L <action>(NextTab)
+nmap H <action>(PreviousTab)
+
+nmap <C-h> <C-w>h
+nmap <C-j> <C-w>j
+nmap <C-k> <C-w>k
+nmap <C-l> <C-w>l
+
+
+" ================================================================================================
+" 👻👻👻 Which-Key 👻👻👻
+" ================================================================================================
+set which-key
+set notimeout
+
+" d: diff
+" nmap <leader>dd <action>(Vcs.ShowTabbedFileHistory)
+
+" f: Find/Format ⭐️
+let g:WhichKeyDesc_FindOrFormat = "<leader>f FindOrFormat"
+let g:WhichKeyDesc_FindOrFormat_FindFile = "<leader>ff FindFile"
+nmap <leader>ff <action>(GotoFile)
+
+let g:WhichKeyDesc_FindOrFormat_FindFileLocation = "<leader>fl FindFileLocation"
+nmap <leader>fl <action>(SelectInProjectView)
+let g:WhichKeyDesc_FindOrFormat_FindText = "<leader>fw FindWords"
+nmap <leader>fw <action>(FindInPath)
+
+let g:WhichKeyDesc_FindOrFormat_Commands = "<leader>fc Commands"
+nmap <leader>fc <action>(GotoAction)
+
+let g:WhichKeyDesc_FindOrFormat_OpenedProject = "<leader>fp OpenedProject"
+nmap <leader>fp <action>(OpenProjectWindows)
+
+let g:WhichKeyDesc_FindOrFormat_Format = "<leader>lf Format"
+nmap <leader>lf <action>(ReformatCode) \| <action>(OptimizeImports)
+" g: Git ⭐️
+let g:WhichKeyDesc_Git = "<leader>g Git"
+let g:WhichKeyDesc_Git_RollbackHunk = "<leader>gr RollbackHunk"
+nmap <leader>gr :action Vcs.RollbackChangedLines<CR>
+
+" i: Insert ⭐️
+"let g:WhichKeyDesc_InsertAfterBrackets = "<leader>i InsertAfterBrackets"
+"nmap <leader>i f(a
+
+" j: add Semicolon and goto nextline⭐️
+"let g:WhichKeyDesc_InsertSemicolon = "<leader>j InsertSemicolon"
+"nmap <leader>j A;<ESC>o
+
+" l: lsp: Language server protocol (align with neovim)⭐️
+let g:WhichKeyDesc_LSP = "<leader>l LSP"
+let g:WhichKeyDesc_LSP_Rename = "<leader>lr Rename"
+nmap <leader>lr <action>(RenameElement)
+
+
+" n: No ⭐️
+"let g:WhichKeyDesc_No_Highlight = "<leader>nl NoHighlight"
+nmap <esc><esc> :nohlsearch<CR>
+
+
+" s: Show ⭐️
+let g:WhichKeyDesc_Show = "<leader>s Show"
+let g:WhichKeyDesc_Show_FileStructure = "<leader>ss ShowFileStructure"
+nmap <leader>ss <action>(FileStructurePopup)
+let g:WhichKeyDesc_Show_Bookmarks = "<leader>sb ShowBookmarks"
+nmap <leader>sb <action>(ShowBookmarks)
+let g:WhichKeyDesc_Show_ParameterInfo = "<leader>sb ShowParameterInfo"
+nmap <leader>sp <action>(ParameterInfo)
+
+" r: Run/Re ⭐️
+let g:WhichKeyDesc_RunOrRe = "<leader>r RunOrRe"
+let g:WhichKeyDesc_RunOrRe_ReRun = "<leader>rr ReRun"
+nmap <leader>rr <action>(Rerun)
+let g:WhichKeyDesc_RunOrRe_ReRunTests = "<leader>rt ReRunTests"
+nmap <leader>rt <action>(RerunTests)
+
+let g:WhichKeyDesc_ZenMode = "<leader>z Zen Mode"
+nmap <leader>z <action>(UnSplitAll) \| <action>(HideAllWindows)
+let g:WhichKeyDesc_SplitWindowVertically = "<leader>w| Splint window Vertical"
+let g:WhichKeyDesc_SplitWindowHorizontal = "<leader>w\ Splint window Horizontal"
+nmap <leader>\| :vs<CR>
+nmap <leader>\\ :sp<CR>
+let g:WhichKeyDesc_Quit = "<leader>q Quit"
+nmap <leader>q :q<CR>
+
+" e: Toggle Explorer ⭐️
+let g:WhichKeyDesc_ToggleExplorerOrExtract = "<leader>e ToggleExplorer"
+nmap <leader>e :NERDTreeToggle<CR>
+let g:WhichKeyDesc_ToggleExplorerOrExtract = "<leader>o FocusExplorer"
+nmap <leader>o :NERDTreeFocus<CR>
+" e: Extract
+" extract method/function
+vmap <leader>re <action>(ExtractMethod)
+" extract constant
+vmap <leader>rc <action>(IntroduceConstant)
+" extract field
+vmap <leader>rf <action>(IntroduceField)
+" extract variable
+vmap <leader>rv <action>(IntroduceVariable)

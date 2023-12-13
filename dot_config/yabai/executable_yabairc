@@ -1,0 +1,117 @@
+## Initialize
+
+# for this to work you must configure sudo such that
+# it will be able to run the command without password
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+sudo yabai --load-sa
+
+
+
+## Layout
+
+# default layout (can be bsp, stack or float)
+yabai -m config layout bsp
+
+# Override default layout for space N only
+#yabai -m config --space N layout float
+
+# New window spawns to the right if vertical split, or bottom if horizontal split
+yabai -m config window_placement second_child
+
+
+## Border  has a bug of new version
+#yabai -m config window_border on
+#yabai -m config window_border_blur on
+#yabai -m config window_border_hidpi on
+#yabai -m config window_border_width 6
+#yabai -m config active_window_border_color 0xff775759
+#yabai -m config normal_window_border_color 0xff555555
+#yabai -m config insert_feedback_color 0xffd75f5f
+
+## Padding and gaps
+
+# Set all padding and gaps to 20pt (default: 0)
+yabai -m config top_padding     0
+yabai -m config bottom_padding  0
+yabai -m config left_padding    0
+yabai -m config right_padding   0
+yabai -m config window_gap      9
+
+
+
+## Split ratios
+
+#Auto balance makes it so all windows always occupy the same space
+# on or off (default: off)
+yabai -m config auto_balance off
+
+# Floating point value between 0 and 1 (default: 0.5)
+yabai -m config split_ratio 0.5
+
+
+
+## Mouse support
+
+# set mouse interaction modifier key (default: fn)
+yabai -m config mouse_modifier alt
+
+# set modifier + left-click drag to move window (default: move)
+yabai -m config mouse_action1 move
+
+# set modifier + right-click drag to resize window (default: resize)
+yabai -m config mouse_action2 resize
+
+# set focus follows mouse mode (default: off, options: off, autoraise, autofocus)
+yabai -m config focus_follows_mouse off
+
+# set mouse follows focus mode (default: off)
+yabai -m config mouse_follows_focus off
+
+
+
+
+# modify window shadows (default: on, options: on, off, float)
+yabai -m config window_shadow on
+
+# window opacity (default: off)
+yabai -m config window_opacity on
+yabai -m config active_window_opacity 1.0
+yabai -m config normal_window_opacity 0.9
+
+
+
+## Rules 
+
+yabai -m rule --add app='^(系统设置|System Settings)$' manage=off sticky=on 
+yabai -m rule --add app='^(系统信息|System Information)$' manage=off sticky=on layer=above
+yabai -m rule --add app='^(活动监视器|Activity Monitor)$' manage=off sticky=on layer=above
+yabai -m rule --add app='^(访达|Finder)$' manage=off 
+yabai -m rule --add app='^(计算器|Calculator)$' manage=off 
+yabai -m rule --add app='^(App Store)$' manage=off 
+yabai -m rule --add label="Software Update" title="Software Update" manage=off
+
+
+
+
+yabai -m rule --add app='SwitchHosts' manage=off sticky=on layer=above
+yabai -m rule --add app='1Password' manage=off sticky=on layer=above
+yabai -m rule --add app='Raycast' manage=off sticky=on layer=above
+yabai -m rule --add app='ClashX' manage=off sticky=on layer=above
+yabai -m rule --add app='EasyConnect' manage=off sticky=on layer=normal
+yabai -m rule --add app='CleanShot X' manage=off sticky=on layer=above
+yabai -m rule --add app='Logi Options+' manage=off sticky=on layer=above
+yabai -m rule --add app='The Unarchiver' manage=off sticky=on layer=above
+yabai -m rule --add app='^(Karabiner-Elements|Karabiner-EventViewer)$' manage=off sticky=on layer=above
+yabai -m rule --add app='^(微信|WeChat)$' manage=off sticky=on layer=normal
+yabai -m rule --add app='Telegram' manage=off sticky=on layer=normal
+yabai -m rule --add app='Discord' manage=off sticky=off layer=normal
+yabai -m rule --add app='Spark' manage=off sticky=on layer=normal
+yabai -m rule --add app='腾讯会议' manage=off sticky=off layer=normal
+yabai -m rule --add app='网易云音乐' manage=off sticky=on layer=normal
+
+jetbrainsApps='^(IntelliJ IDEA|PyCharm|WebStorm|GoLand)$'
+# must be set setting >> appearance and behavior >> always show full path in the window title is enabled
+yabai -m rule --add app="JetBrains Toolbox" manage=off
+yabai -m rule --add app="${jetbrainsApps}" manage=on
+#yabai -m rule --add app="${jetbrainsApps}" title="( – )" manage=on
+

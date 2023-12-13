@@ -1,0 +1,39 @@
+apiVersion: ""
+generated: "0001-01-01T00:00:00Z"
+repositories:
+- caFile: ""
+  certFile: ""
+  insecure_skip_tls_verify: false
+  keyFile: ""
+  name: longhorn
+  pass_credentials_all: false
+  password: ""
+  url: https://charts.longhorn.io
+  username: ""
+- caFile: ""
+  certFile: ""
+  insecure_skip_tls_verify: false
+  keyFile: ""
+  name: gitlab
+  pass_credentials_all: false
+  password: ""
+  url: https://charts.gitlab.io/
+  username: ""
+- caFile: ""
+  certFile: ""
+  insecure_skip_tls_verify: false
+  keyFile: ""
+  name: bitnami
+  pass_credentials_all: false
+  password: ""
+  url: https://charts.bitnami.com/bitnami
+  username: ""
+- caFile: ""
+  certFile: ""
+  insecure_skip_tls_verify: false
+  keyFile: ""
+  name: rancher-stable
+  pass_credentials_all: false
+  password: ""
+  url: https://rancher-mirror.rancher.cn/server-charts/stable
+  username: ""

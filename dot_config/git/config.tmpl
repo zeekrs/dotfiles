@@ -1,0 +1,14 @@
+# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+	name = {{ .chezmoi.username }}
+	email = {{ .email }}
+[pull]
+	rebase = false
+[push]
+	default = current
+	autoSetupRemote = true
+[init]
+	defaultBranch = main
+[core]
+	excludesfile = ~/.config/git/ignore
