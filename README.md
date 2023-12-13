@@ -4,15 +4,15 @@
 
 ### tool set
 
-- [fish shell]("https://github.com/fish-shell/fish-shell")
-- [alacritty]("https://github.com/alacritty/alacritty")
-- [tmux]("https://github.com/tmux/tmux")
+- [fish shell](https://github.com/fish-shell/fish-shell)
+- [alacritty](https://github.com/alacritty/alacritty)
+- [tmux](https://github.com/tmux/tmux)
 - [neovim](https://github.com/neovim/neovim)
-- [yabai]("https://github.com/koekeishiya/yabai")
+- [yabai](https://github.com/koekeishiya/yabai)
 
 ### setup
 
-- [install chezmoi]("https://www.chezmoi.io/install")
+- [install chezmoi](https://www.chezmoi.io/install)
 
 - edit chezmoi config file
 
