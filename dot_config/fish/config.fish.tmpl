@@ -24,11 +24,6 @@ set -x BAT_THEME Catppuccin-mocha
 # config file
 set -Ux XDG_CONFIG_HOME "$HOME/.config"
 
-{{if hasKey . "open_api_key"}} 
-set -x OPENAI_API_KEY {{ .open_api_key | quote }}
-{{end}}
-
-
 
 # zoxide is a smarter cd command
 zoxide init fish | source
