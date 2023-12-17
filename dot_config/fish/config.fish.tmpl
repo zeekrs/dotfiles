@@ -1,29 +1,24 @@
-
-# key binding
-function fish_hybrid_key_bindings --description \
-    "Vi-style bindings that inherit emacs-style bindings in all modes"
-    for mode in default insert visual
-        fish_default_key_bindings -M $mode
-    end
-    fish_vi_key_bindings --no-erase
-end
-set -g fish_key_bindings fish_hybrid_key_bindings
-
 #Editor 
 set -Ux EDITOR nvim
 
-set -Ux REACT_EDITOR webstorm
+set -Ux REACT_EDITOR nvim
 
 # proxy 
 {{if hasKey . "proxy_host"}} 
 set proxy_host {{ .proxy_host }}
 {{end}}
 
+# open ai 
+{{if hasKey . "openai_api_host"}} 
+set -x OPENAI_API_HOST {{ .openai_api_host }}
+{{end}}
+
+set -x OPENAI_API_KEY {{ onepasswordRead "op://Personal/OpenAI/credential" }}
+
 set -x BAT_THEME Catppuccin-mocha
 
 # config file
 set -Ux XDG_CONFIG_HOME "$HOME/.config"
-
 
 # zoxide is a smarter cd command
 zoxide init fish | source
