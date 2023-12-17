@@ -1,6 +1,9 @@
 [default_view]
 
 keymap = [
+
+  { keys = ["ctrl+g"], command = "shell lazygit" },
+
   { keys = ["escape"], command = "escape" },
   { keys = ["ctrl+t"], command = "new_tab" },
   { keys = ["alt+t"], command = "new_tab --cursor" },
