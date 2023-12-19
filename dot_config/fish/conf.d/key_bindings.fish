@@ -7,5 +7,6 @@ function fish_hybrid_key_bindings --description \
 
     bind \cg lazygit
     bind -M insert \cg lazygit
+    fzf_configure_bindings --directory=\ct --git_log=\e/
 end
 set -g fish_key_bindings fish_hybrid_key_bindings

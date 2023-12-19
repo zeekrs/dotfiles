@@ -20,9 +20,14 @@ set -x BAT_THEME Catppuccin-mocha
 # config file
 set -Ux XDG_CONFIG_HOME "$HOME/.config"
 
+# ripgrep
+set -x RIPGREP_CONFIG_PATH "$XDG_CONFIG_HOME/ripgrep/ripgreprc"
+
+# fzf
+set fzf_directory_opts --bind "ctrl-o:execute($EDITOR {} &> /dev/tty)"
+
 # zoxide is a smarter cd command
 zoxide init fish | source
-
 
 # starship
 # ignore starship warnings

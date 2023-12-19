@@ -18,6 +18,7 @@
 - [sdkman](https://github.com/sdkman/sdkman-cli)
 - [joshuto](https://github.com/kamiyaa/joshuto)
 - [fzf](https://github.com/junegunn/fzf)
+- [ripgrep](https://github.com/BurntSushi/ripgrep)
 - [bat](https://github.com/sharkdp/bat)
 - [bottom](https://github.com/ClementTsang/bottom)
 - [lazygit](https://github.com/jesseduffield/lazygit)
