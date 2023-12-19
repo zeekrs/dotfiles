@@ -11,7 +11,6 @@ return {
   },
   {
     "jackMort/ChatGPT.nvim",
-    event = "VeryLazy",
     opts = {},
     keys = {
       {

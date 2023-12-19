@@ -18,7 +18,6 @@ return {
   {
     "ThePrimeagen/harpoon",
     lazy = true,
-    event = "VeryLazy",
     keys = {
       {
         prefix .. "a",

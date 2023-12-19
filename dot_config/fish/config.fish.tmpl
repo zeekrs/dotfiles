@@ -23,6 +23,11 @@ set -Ux XDG_CONFIG_HOME "$HOME/.config"
 # zoxide is a smarter cd command
 zoxide init fish | source
 
-# pro
+
+# starship
+# ignore starship warnings
+set -x STARSHIP_LOG error
+
 starship init fish | source
+
 
