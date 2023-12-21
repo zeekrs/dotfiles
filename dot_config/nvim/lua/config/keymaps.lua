@@ -13,6 +13,7 @@ vim.keymap.del({ "n", "t" }, "<c-_>")
 vim.keymap.set("n", "<c-\\>", lazyterm, { desc = "Terminal (root dir)" })
 vim.keymap.set("t", "<c-\\>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 
+-- reset split window
 vim.keymap.del("n", "<leader>-")
 vim.keymap.del("n", "<leader>w-")
 vim.keymap.set("n", "<leader>\\", "<C-W>s", { desc = "Split window below" })
