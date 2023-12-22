@@ -1,5 +1,4 @@
 local prefix = "<leader><space>"
-local term_string = vim.fn.exists("$TMUX") == 1 and "tmux" or "terminal"
 local maps = { n = {} }
 local icon = vim.g.icons_enabled and "󱡀 " or ""
 maps.n[prefix] = { desc = icon .. "Harpoon" }
