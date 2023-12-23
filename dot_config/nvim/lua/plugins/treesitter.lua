@@ -18,5 +18,10 @@ return {
         },
       },
     },
+    config = function(_, opts)
+      -- do not use apple gcc
+      require("nvim-treesitter.install").compilers = { "gcc-12" }
+      require("nvim-treesitter.configs").setup(opts)
+    end,
   },
 }

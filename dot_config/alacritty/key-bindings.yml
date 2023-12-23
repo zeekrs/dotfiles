@@ -353,15 +353,23 @@ key_bindings:
   #- { key: F,              mods: Command, mode: ~Search,     action: SearchForward         }
   #- { key: B,              mods: Command, mode: ~Search,     action: SearchBackward        }
 
-  # https://zhuanlan.zhihu.com/p/568917447
+  # HACK: keys
   # https://www.joshmedeski.com/posts/macos-keyboard-shortcuts-for-tmux/
   # xxd -psd
+  #
+  # tmux create new window
   - { key: T,              mods: Command,                     chars: "\x00c"        }
+  # tmux split pane vertical
   - { key: D,              mods: Command,                     chars: "\x00|"        }
+  # tmux split pane horizontal
   - { key: D,              mods: Command | Shift,             chars: "\x00\x5c"     }
+  # tmux close pane 
   - { key: W,              mods: Command,                     chars: "\x00x"        }
+  # tmux close window 
   - { key: W,              mods: Command | Shift,             chars: "\x00X"        }
+  # tmux new sssion
   - { key: N,              mods: Command,                     chars: "\x00\x03"     }
+  # tmux select windows 1-9
   - { key: Key1,           mods: Command,                     chars: "\x001"        }
   - { key: Key2,           mods: Command,                     chars: "\x002"        }
   - { key: Key3,           mods: Command,                     chars: "\x003"        }
@@ -371,13 +379,27 @@ key_bindings:
   - { key: Key7,           mods: Command,                     chars: "\x007"        }
   - { key: Key8,           mods: Command,                     chars: "\x008"        }
   - { key: Key9,           mods: Command,                     chars: "\x009"        }
-  # command + s , with tmux for vim save file
-  - { key: S,           mods: Command,                     chars: "\x00S"        }    
-  # - { key: Key0,           mods: Command,                     chars: "\x000"        }
+  # tmux rename window
   - { key: R,              mods: Command,                     chars: "\x00r"        }
+  # tmux rename session
   - { key: R,              mods: Command | Shift,             chars: "\x00R"        }
-  - { key: Grave,          mods: Command | Control,           chars: "\x00\x09"     }   # hack with karabiner
+  # tmux toggle last window  (hack with karabiner)
+  - { key: Grave,          mods: Command | Control,           chars: "\x00\x09"     }
+  # tmux toggle last session  (hack with karabiner)
   - { key: Grave,          mods: Command | Control | Shift,   chars: "\x00\x1b\x5b\x5a"     }   # hack with karabiner
-  - { key: LBracket,       mods: Command,                     chars: "\x00["       }   # hack with karabiner
-  - { key: RBracket,       mods: Command,                     chars: "\x00]"       }   # hack with karabiner
+  # tmux select next window
+  - { key: LBracket,       mods: Command,                     chars: "\x00["       }
+  # tmux select previous window
+  - { key: RBracket,       mods: Command,                     chars: "\x00]"       }
+
+
+  # vim save file work with tmux  
+  - { key: S,              mods: Command,                     chars: "\x1b[1;6P"  } #f37
+  # reset c-m c-i c-/ work in vim
+  - { key: M,              mods: Control,                     chars: "\x1b[1;6Q"}  #f38
+  - { key: I,              mods: Control,                     chars: "\x1b[1;6R"}  #f39
+
+
+
+  # create new alacritty instance without tmux
   - { key: N,              mods: Command | Shift,             command: { program: "/opt/homebrew/bin/alacritty", args:["msg","create-window", "-e", "/opt/homebrew/bin/fish", "--login"] }}
