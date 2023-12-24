@@ -12,6 +12,7 @@ return {
         require("smart-splits").move_cursor_left()
       end,
       desc = "Go to left window",
+      mode = { "n" },
     },
     {
       "<C-j>",
@@ -19,6 +20,7 @@ return {
         require("smart-splits").move_cursor_down()
       end,
       desc = "Go to lower window",
+      mode = { "n" },
     },
     {
       "<C-k>",
@@ -26,6 +28,7 @@ return {
         require("smart-splits").move_cursor_up()
       end,
       desc = "Go to upper window",
+      mode = { "n" },
     },
     {
       "<C-l>",
@@ -33,6 +36,7 @@ return {
         require("smart-splits").move_cursor_right()
       end,
       desc = "Go to right window",
+      mode = { "n" },
     },
     -- resize
     {
@@ -41,6 +45,7 @@ return {
         require("smart-splits").resize_left()
       end,
       desc = "Decrease window width",
+      mode = { "n" },
     },
     {
       "<A-j>",
@@ -48,6 +53,7 @@ return {
         require("smart-splits").resize_down()
       end,
       desc = "Decrease window height",
+      mode = { "n" },
     },
     {
       "<A-k>",
@@ -55,6 +61,7 @@ return {
         require("smart-splits").resize_up()
       end,
       desc = "Increase window height",
+      mode = { "n" },
     },
     {
       "<A-l>",
@@ -62,6 +69,7 @@ return {
         require("smart-splits").resize_right()
       end,
       desc = "Increase window width",
+      mode = { "n" },
     },
     -- swap windows
     {

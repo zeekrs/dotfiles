@@ -394,10 +394,11 @@ key_bindings:
 
 
   # vim save file work with tmux  
-  - { key: S,              mods: Command,                     chars: "\x1b[1;6P"  } #f37
-  # reset c-m c-i c-/ work in vim
-  - { key: M,              mods: Control,                     chars: "\x1b[1;6Q"}  #f38
-  - { key: I,              mods: Control,                     chars: "\x1b[1;6R"}  #f39
+  - { key: S,              mods: Command,                     chars: "\x1b[1;6P"}  #F37
+  # reset c-m c-i c-= work in vim
+  - { key: M,              mods: Control,                     chars: "\x1b[1;6Q"}  #F38
+  - { key: I,              mods: Control,                     chars: "\x1b[1;6R"}  #F39
+  - { key: Equals,         mods: Control,                     chars: "\x1b[1;6S"}  #F40
 
 
 
