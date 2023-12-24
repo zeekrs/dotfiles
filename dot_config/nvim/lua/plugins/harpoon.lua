@@ -1,7 +1,4 @@
 local prefix = "<leader><space>"
-local maps = { n = {} }
-local icon = vim.g.icons_enabled and "󱡀 " or ""
-maps.n[prefix] = { desc = icon .. "Harpoon" }
 
 return {
 
