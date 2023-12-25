@@ -129,9 +129,171 @@ return {
       },
     },
   },
+
   {
-    url = "andrewferrier/debugprint.nvim",
+    "ThePrimeagen/refactoring.nvim",
+    keys = {
+      {
+        "<leader>re",
+        function()
+          require("refactoring").refactor("Extract Function")
+        end,
+        mode = "x",
+        desc = "Extract function",
+      },
+      {
+        "<leader>rf",
+        function()
+          require("refactoring").refactor("Extract Function To File")
+        end,
+        mode = "x",
+        desc = "Extract function to file",
+      },
+      {
+        "<leader>rv",
+        function()
+          require("refactoring").refactor("Extract Variable")
+        end,
+        mode = "x",
+        desc = "Extract variable",
+      },
+      {
+        "<leader>rI",
+        function()
+          require("refactoring").refactor("Inline Function")
+        end,
+        mode = "n",
+        desc = "Inline function",
+      },
+      {
+        "<leader>ri",
+        function()
+          require("refactoring").refactor("Inline Variable")
+        end,
+        mode = { "x", "n" },
+        desc = "Inline variable",
+      },
+      {
+        "<leader>rb",
+        function()
+          require("refactoring").refactor("Extract Block")
+        end,
+        mode = "n",
+        desc = "Extract block",
+      },
+      {
+        "<leader>rf",
+        function()
+          require("refactoring").refactor("Extract Block To File")
+        end,
+        mode = "n",
+        desc = "Extract block to file",
+      },
+
+      {
+        "<leader>rr",
+        function()
+          require("telescope").extensions.refactoring.refactors()
+        end,
+        mode = { "n", "x" },
+        desc = "Extract block to file",
+      },
+    },
+    config = true,
+  },
+
+  {
+    "andrewferrier/debugprint.nvim",
     opts = {},
     version = "*",
+  },
+  -- Split Join code block
+  {
+    "Wansmer/treesj",
+    keys = {
+      {
+        "J",
+        function()
+          require("treesj").toggle()
+        end,
+        mode = { "n" },
+        desc = "Toggle split/join",
+      },
+    },
+    opts = {
+      use_default_keymaps = false,
+      max_join_length = 65536,
+    },
+  },
+  -- Better increase/descrease
+  {
+    "monaqa/dial.nvim",
+    keys = {
+      {
+        "<C-a>",
+        function()
+          return require("dial.map").manipulate("increment", "normal")
+        end,
+        desc = "Increment",
+        mode = "n",
+      },
+      {
+        "<C-x>",
+        function()
+          return require("dial.map").manipulate("decrement", "normal")
+        end,
+        desc = "Decrement",
+        mode = "n",
+      },
+      {
+        "g<C-a>",
+        function()
+          return require("dial.map").manipulate("increment", "gnormal")
+        end,
+        desc = "Increment",
+        mode = "n",
+      },
+      {
+        "g<C-x>",
+        function()
+          return require("dial.map").manipulate("decrement", "gnormal")
+        end,
+        desc = "Decrement",
+        mode = "n",
+      },
+
+      {
+        "<C-a>",
+        function()
+          return require("dial.map").manipulate("increment", "visual")
+        end,
+        desc = "Increment",
+        mode = "v",
+      },
+      {
+        "<C-x>",
+        function()
+          return require("dial.map").manipulate("decrement", "visual")
+        end,
+        desc = "Decrement",
+        mode = "v",
+      },
+      {
+        "g<C-a>",
+        function()
+          return require("dial.map").manipulate("increment", "gvisual")
+        end,
+        desc = "Increment",
+        mode = "v",
+      },
+      {
+        "g<C-x>",
+        function()
+          return require("dial.map").manipulate("decrement", "gvisual")
+        end,
+        desc = "Decrement",
+        mode = "v",
+      },
+    },
   },
 }
