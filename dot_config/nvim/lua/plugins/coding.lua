@@ -129,4 +129,9 @@ return {
       },
     },
   },
+  {
+    url = "andrewferrier/debugprint.nvim",
+    opts = {},
+    version = "*",
+  },
 }
