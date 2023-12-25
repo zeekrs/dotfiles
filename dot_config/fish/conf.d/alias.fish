@@ -18,8 +18,6 @@ alias cat=bat
 
 alias ps=procs
 
-alias jo=joshuto
-
 alias top=btm
 
 alias du=dust

@@ -109,23 +109,65 @@ return {
     keys = {
       {
         "w",
-        "<cmd>lua require('spider').motion('w')<CR>",
+        function()
+          require("spider").motion("w")
+        end,
         mode = { "n", "o", "x" },
+      },
+      {
+        "w",
+        function()
+          ---@diagnostic disable-next-line: missing-fields
+          require("spider").motion("w", { skipInsignificantPunctuation = false })
+        end,
+        mode = { "o" },
       },
       {
         "e",
-        "<cmd>lua require('spider').motion('e')<CR>",
-        mode = { "n", "o", "x" },
+        function()
+          require("spider").motion("e")
+        end,
+        mode = { "n", "x" },
+      },
+      {
+        "e",
+        function()
+          ---@diagnostic disable-next-line: missing-fields
+          require("spider").motion("e", { skipInsignificantPunctuation = false })
+        end,
+        mode = { "o" },
       },
       {
         "b",
-        "<cmd>lua require('spider').motion('b')<CR>",
-        mode = { "n", "o", "x" },
+        function()
+          require("spider").motion("b")
+        end,
+        mode = { "n", "x" },
+      },
+
+      {
+        "b",
+        function()
+          ---@diagnostic disable-next-line: missing-fields
+          require("spider").motion("b", { skipInsignificantPunctuation = false })
+        end,
+        mode = { "o" },
       },
       {
         "ge",
-        "<cmd>lua require('spider').motion('ge')<CR>",
-        mode = { "n", "o", "x" },
+        function()
+          require("spider").motion("ge")
+        end,
+        mode = { "n", "x" },
+      },
+
+      {
+        "ge",
+        function()
+          ---@diagnostic disable-next-line: missing-fields
+          require("spider").motion("ge", { skipInsignificantPunctuation = false })
+        end,
+        mode = { "o" },
       },
     },
   },

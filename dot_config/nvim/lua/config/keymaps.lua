@@ -33,6 +33,21 @@ local function _lazygit_terminal_toggle()
   lazygit_terminal:toggle()
 end
 
+local yazi_terminal = Terminal:new({
+  display_name = "yazi",
+  cmd = "yazi",
+  dir = "git_dir",
+  direction = "float",
+  id = 9999,
+  on_open = function(term)
+    vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", { noremap = true, silent = true })
+  end,
+})
+
+local function _yazi_terminal_toggle()
+  yazi_terminal:toggle()
+end
+
 -- remove default keymaps
 vim.keymap.del({ "n", "t" }, "<C-_>")
 vim.keymap.del({ "n", "t" }, "<C-/>")
@@ -48,6 +63,7 @@ vim.keymap.set({ "n", "t" }, "<C-\\>", "<cmd>execute v:count1 . 'ToggleTerm'<CR>
 vim.keymap.set({ "n", "t" }, keys["<C-=>"], _f_terminal_toggle, { desc = "Toggle Float Terminal" })
 --
 vim.keymap.set({ "n", "t" }, "<leader>gg", _lazygit_terminal_toggle, { desc = "Toggle Lazy Git" })
+vim.keymap.set({ "n", "t" }, "<leader>gz", _yazi_terminal_toggle, { desc = "Toggle Yazi" })
 
 vim.keymap.set({ "t" }, "<esc><esc>", "<cmd>close<CR>", { desc = "Close Terminal" })
 

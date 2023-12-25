@@ -16,7 +16,7 @@
 - [homebrew](https://github.com/Homebrew/brew)
 - [volta](https://github.com/volta-cli/volta)
 - [sdkman](https://github.com/sdkman/sdkman-cli)
-- [joshuto](https://github.com/kamiyaa/joshuto)
+- [yazi](https://github.com/sxyazi/yazi)
 - [fzf](https://github.com/junegunn/fzf)
 - [ripgrep](https://github.com/BurntSushi/ripgrep)
 - [bat](https://github.com/sharkdp/bat)
