@@ -179,17 +179,4 @@ return {
     },
     cmd = { "ToggleTerm", "TermExec" },
   },
-  --  NOTE: have some problem
-  {
-    "3rd/image.nvim",
-    enabled = false,
-    event = {
-      "FileType markdown,norg",
-      'BufRead "*.png", "*.jpg", "*.jpeg", "*.gif", "*.webp"',
-    },
-    build = "luarocks --local --lua-version=5.1 install magick",
-    opts = {
-      backend = "ueberzug",
-    },
-  },
 }

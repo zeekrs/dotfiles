@@ -118,7 +118,7 @@ return {
         "w",
         function()
           ---@diagnostic disable-next-line: missing-fields
-          require("spider").motion("w", { skipInsignificantPunctuation = false })
+          require("spider").motion("w", { skipInsignificantPunctuation = false, subwordMovement = false })
         end,
         mode = { "o" },
       },
@@ -133,7 +133,7 @@ return {
         "e",
         function()
           ---@diagnostic disable-next-line: missing-fields
-          require("spider").motion("e", { skipInsignificantPunctuation = false })
+          require("spider").motion("e", { skipInsignificantPunctuation = false, subwordMovement = false })
         end,
         mode = { "o" },
       },
@@ -149,7 +149,7 @@ return {
         "b",
         function()
           ---@diagnostic disable-next-line: missing-fields
-          require("spider").motion("b", { skipInsignificantPunctuation = false })
+          require("spider").motion("b", { skipInsignificantPunctuation = false, subwordMovement = false })
         end,
         mode = { "o" },
       },
@@ -165,7 +165,7 @@ return {
         "ge",
         function()
           ---@diagnostic disable-next-line: missing-fields
-          require("spider").motion("ge", { skipInsignificantPunctuation = false })
+          require("spider").motion("ge", { skipInsignificantPunctuation = false, subwordMovement = false })
         end,
         mode = { "o" },
       },

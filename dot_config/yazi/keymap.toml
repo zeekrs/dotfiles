@@ -5,6 +5,9 @@ keymap = [
     "<C-g>",
   ], exec = "shell lazygit --block --confirm", desc = "Lazy Git" },
   { on = [
+    "<C-s>",
+  ], exec = '''shell "$SHELL" --block --confirm''', desc = "Open shell here" },
+  { on = [
     "<Esc>",
   ], exec = "escape", desc = "Exit visual mode, clear selected, or cancel search" },
   { on = [

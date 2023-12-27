@@ -26,6 +26,9 @@ set -x RIPGREP_CONFIG_PATH "$XDG_CONFIG_HOME/ripgrep/ripgreprc"
 # fzf
 set fzf_directory_opts --bind "ctrl-o:execute($EDITOR {} &> /dev/tty)"
 
+set fzf_preview_dir_cmd exa --color=always --group-directories-first
+
+
 # zoxide is a smarter cd command
 zoxide init fish | source
 
