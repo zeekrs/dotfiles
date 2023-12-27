@@ -3,11 +3,11 @@ alias vi=nvim
 alias vim=nvim
 alias vimdiff="nvim -d"
 
-alias ls='exa --color=always --group-directories-first'
-alias la='exa -a --color=always --group-directories-first'
-alias ll='exa -la --color=always --icons --group-directories-first'
-alias lt='exa -aT --color=always --icons --group-directories-first'
-alias l.='exa -a | egrep "^\."'
+alias ls='eza --color=always --group-directories-first'
+alias la='eza -a --color=always --group-directories-first'
+alias ll='eza -la --color=always --icons --group-directories-first'
+alias lt='eza -aT --color=always --icons --group-directories-first'
+alias l.='eza -a | egrep "^\."'
 
 
 alias cm=chezmoi
