@@ -1,0 +1,28 @@
+import = [
+  "~/.config/alacritty/themes/catppuccin-mocha.toml",
+  "~/.config/alacritty/fonts.toml",
+  "~/.config/alacritty/key-bindings.toml",
+]
+live_config_reload = true
+
+[env]
+TERM = "tmux-256color"
+
+[selection]
+save_to_clipboard = true
+semantic_escape_chars = ",│`|:\"' ()[]{}<>"
+
+[shell]
+args = ["--login", "--command", "tmux new-session -A -D -s main"]
+program = "/opt/homebrew/bin/fish"
+
+[window]
+decorations = "buttonless"
+dynamic_padding = true
+dynamic_title = true
+option_as_alt = "Both"
+startup_mode = "Windowed"
+
+[window.padding]
+x = 8
+y = 8

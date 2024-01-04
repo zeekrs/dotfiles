@@ -1,0 +1,191 @@
+# tmux new window 
+[[keyboard.bindings]]
+key = "T"
+mods = "Command"
+[keyboard.bindings.command]
+program = "/opt/homebrew/bin/tmux"
+args = ["new-window"]
+
+# tmux new session
+[[keyboard.bindings]]
+key = "N"
+mods = "Command"
+[keyboard.bindings.command]
+program = "/opt/homebrew/bin/tmux"
+args = ["run-shell", "tmux switch-client -t $(tmux new-session -dP)"]
+
+# new alacrity instance without tmux 
+[[keyboard.bindings]]
+key = "N"
+mods = "Command|Shift"
+[keyboard.bindings.command]
+program = "/opt/homebrew/bin/alacritty"
+args = ["msg", "create-window", "-e", "/opt/homebrew/bin/fish", "--login"]
+
+# tmux split window horizontal
+[[keyboard.bindings]]
+key = "D"
+mods = "Command"
+[keyboard.bindings.command]
+program = "/opt/homebrew/bin/tmux"
+args = ["split-window", "-h", "-c", "#{pane_current_path}"]
+
+# tmux split window vertical
+[[keyboard.bindings]]
+key = "D"
+mods = "Command|Shift"
+[keyboard.bindings.command]
+program = "/opt/homebrew/bin/tmux"
+args = ["split-window", "-v", "-c", "#{pane_current_path}"]
+
+# tmux close pane
+[[keyboard.bindings]]
+key = "W"
+mods = "Command"
+[keyboard.bindings.command]
+program = "/opt/homebrew/bin/tmux"
+args = ["kill-pane"]
+
+# tmux close window
+[[keyboard.bindings]]
+key = "W"
+mods = "Command|Shift"
+[keyboard.bindings.command]
+program = "/opt/homebrew/bin/tmux"
+args = ["kill-window"]
+
+
+# tmux select window 1
+[[keyboard.bindings]]
+key = "Key1"
+mods = "Command"
+[keyboard.bindings.command]
+program = "/opt/homebrew/bin/tmux"
+args = ["select-window", "-t", "1"]
+
+# tmux select window 2
+[[keyboard.bindings]]
+key = "Key2"
+mods = "Command"
+[keyboard.bindings.command]
+program = "/opt/homebrew/bin/tmux"
+args = ["select-window", "-t", "2"]
+
+# tmux select window 3
+[[keyboard.bindings]]
+key = "Key3"
+mods = "Command"
+[keyboard.bindings.command]
+program = "/opt/homebrew/bin/tmux"
+args = ["select-window", "-t", "3"]
+
+# tmux select window 4
+[[keyboard.bindings]]
+key = "Key4"
+mods = "Command"
+[keyboard.bindings.command]
+program = "/opt/homebrew/bin/tmux"
+args = ["select-window", "-t", "4"]
+
+# tmux select window 5
+[[keyboard.bindings]]
+key = "Key5"
+mods = "Command"
+[keyboard.bindings.command]
+program = "/opt/homebrew/bin/tmux"
+args = ["select-window", "-t", "5"]
+
+# tmux select window 6
+[[keyboard.bindings]]
+key = "Key6"
+mods = "Command"
+[keyboard.bindings.command]
+program = "/opt/homebrew/bin/tmux"
+args = ["select-window", "-t", "6"]
+
+# tmux select window 7
+[[keyboard.bindings]]
+key = "Key7"
+mods = "Command"
+[keyboard.bindings.command]
+program = "/opt/homebrew/bin/tmux"
+args = ["select-window", "-t", "7"]
+
+# tmux select window 8
+[[keyboard.bindings]]
+key = "Key8"
+mods = "Command"
+[keyboard.bindings.command]
+program = "/opt/homebrew/bin/tmux"
+args = ["select-window", "-t", "8"]
+
+# tmux select window 9
+[[keyboard.bindings]]
+key = "Key9"
+mods = "Command"
+[keyboard.bindings.command]
+program = "/opt/homebrew/bin/tmux"
+args = ["select-window", "-t", "9"]
+
+# tmux rename window 
+[[keyboard.bindings]]
+key = "R"
+mods = "Command"
+[keyboard.bindings.command]
+program = "/opt/homebrew/bin/tmux"
+args = ["command-prompt", "rename-window %%"]
+
+# tmux rename session 
+[[keyboard.bindings]]
+key = "R"
+mods = "Command | Shift"
+[keyboard.bindings.command]
+program = "/opt/homebrew/bin/tmux"
+args = ["command-prompt", "rename-session %%"]
+
+
+#tmux goto last window  hack for karabiner
+[[keyboard.bindings]]
+key = "`"
+mods = "Command|Control"
+[keyboard.bindings.command]
+program = "/opt/homebrew/bin/tmux"
+args = ["last-window"]
+
+
+[[keyboard.bindings]]
+key = "LBracket"
+mods = "Command"
+[keyboard.bindings.command]
+program = "/opt/homebrew/bin/tmux"
+args = ["previous-window"]
+
+[[keyboard.bindings]]
+key = "RBracket"
+mods = "Command"
+[keyboard.bindings.command]
+program = "/opt/homebrew/bin/tmux"
+args = ["previous-window"]
+
+#HACK: F37 + keys 
+#
+# work with tmux & vim to save file
+[[keyboard.bindings]]
+chars = "\u001B[1;6P"
+key = "S"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001B[1;6Q"
+key = "M"
+mods = "Control"
+#
+[[keyboard.bindings]]
+chars = "\u001B[1;6R"
+key = "I"
+mods = "Control"
+#
+[[keyboard.bindings]]
+chars = "\u001B[1;6S"
+key = "Equals"
+mods = "Control"

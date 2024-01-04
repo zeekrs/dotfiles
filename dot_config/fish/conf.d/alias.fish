@@ -9,6 +9,9 @@ alias ll='eza -la --color=always --icons --group-directories-first'
 alias lt='eza -aT --color=always --icons --group-directories-first'
 alias l.='eza -a | egrep "^\."'
 
+alias k=kubectl
+alias kk=k9s
+
 
 alias cm=chezmoi
 
