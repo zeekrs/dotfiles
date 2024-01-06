@@ -1,12 +1,20 @@
+if status is-interactive
+    atuin init fish | source
+
+    starship init fish | source
+
+    zoxide init fish | source
+end
+
 #Editor 
 set -Ux EDITOR nvim
 
 set -Ux REACT_EDITOR nvim
 
 # proxy 
-{{if hasKey . "proxy_host"}} 
-set proxy_host {{ .proxy_host }}
-{{end}}
+
+set proxy_host 127.0.0.1:7890
+
 
 # open ai 
 {{if hasKey . "openai_api_host"}} 
@@ -15,27 +23,14 @@ set -x OPENAI_API_HOST {{ .openai_api_host }}
 
 set -x OPENAI_API_KEY {{ onepasswordRead "op://Personal/OpenAI/credential" }}
 
-set -x BAT_THEME Catppuccin-mocha
-
 # config file
 set -Ux XDG_CONFIG_HOME "$HOME/.config"
 
 # ripgrep
 set -x RIPGREP_CONFIG_PATH "$XDG_CONFIG_HOME/ripgrep/ripgreprc"
 
-# fzf
-set fzf_directory_opts --bind "ctrl-o:execute($EDITOR {} &> /dev/tty)"
-
-set fzf_preview_dir_cmd exa --color=always --group-directories-first
-
-
-# zoxide is a smarter cd command
-zoxide init fish | source
 
 # starship
 # ignore starship warnings
 set -x STARSHIP_LOG error
-
-starship init fish | source
-
 

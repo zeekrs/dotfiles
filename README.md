@@ -65,6 +65,8 @@
   Generating regular expressions from user-provided test cases
 - [hostctl](https://github.com/guumaster/hostctl) -
   Tool to manage /etc/hosts like a pro!
+- [atuin](https://github.com/ellie/atuin) -
+  Magical shell history
 
 ### Installation
 
