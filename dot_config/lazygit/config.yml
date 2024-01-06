@@ -1,4 +1,4 @@
-gui:
+?gui:
   # use the mocha catppuccin theme
   theme:
     activeBorderColor:
@@ -22,3 +22,36 @@ gui:
       - "#cdd6f4"
     searchingActiveBorderColor:
       - "#f9e2af"
+git:
+  paging:
+    colorArg: always
+    pager: delta --dark --paging=never
+
+promptToReturnFromSubprocess: false
+keybinding:
+  files:
+    commitChanges: C
+    commitChangesWithEditor: <c-c>
+  branches:
+    createPullRequest: o
+    viewPullRequestOptions: O
+    copyPullRequestURL: <c-y>
+    checkoutBranchByName: c
+    forceCheckoutBranch: F
+    rebaseBranch: r
+    renameBranch: R
+    mergeIntoCurrentBranch: M
+    viewGitFlowOptions: i
+    fastForward: f
+    createTag: T
+    pushTag: P
+    setUpstream: u
+    fetchRemote: f
+    sortOrder: s
+customCommands:
+  - key: "c"
+    command: "git cz c"
+    description: "commit with commitizen"
+    context: "files"
+    loadingText: "opening commitizen commit tool"
+    subprocess: true

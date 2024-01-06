@@ -40,6 +40,10 @@
   cat(1) clone with syntax highlighting and Git integration.
 - [bottom](https://github.com/ClementTsang/bottom) -
   Customizable cross-platform graphical process/system monitor for the terminal
+- [delta](https://github.com/dandavison/delta) -
+  A syntax-highlighting pager for git, diff, and grep output
+- [commitizen](https://github.com/commitizen-tools/commitizen) -
+  Is release management tool designed for teams.
 - [lazygit](https://github.com/jesseduffield/lazygit) -
   Simple terminal UI for git commands
 - [neofetch](https://github.com/dylanaraps/neofetch) -
@@ -59,6 +63,8 @@
   Count your code, quickly.
 - [grex](https://github.com/pemistahl/grex) -
   Generating regular expressions from user-provided test cases
+- [hostctl](https://github.com/guumaster/hostctl) -
+  Tool to manage /etc/hosts like a pro!
 
 ### Installation
 
