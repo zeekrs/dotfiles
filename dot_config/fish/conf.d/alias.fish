@@ -43,3 +43,5 @@ alias ssh='TERM=xterm-256color /usr/bin/ssh'
 alias clear='echo -en "\x1b[2J\x1b[1;1H"; print_spark_line'
 
 alias j=just
+
+alias tail=tspin

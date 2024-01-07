@@ -79,6 +79,12 @@
   A handy way to save and run project-specific commands.
 - [macchina](https://github.com/macchina-cli/macchina) -
   A system information frontend with an emphasis on performance.
+- [ouch](https://github.com/ouch-org/ouch) -
+  Stands for Obvious Unified Compression Helper.
+- [tailspin](https://github.com/bensadeh/tailspin) -
+  A log file highlighter
+- [xh](https://github.com/ducaale/xh) -
+  Friendly and fast tool for sending HTTP requests
 
 ### Installation
 

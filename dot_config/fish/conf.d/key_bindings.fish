@@ -13,5 +13,8 @@ function fish_hybrid_key_bindings --description \
 
     bind \cp _atuin_bind_up
     bind -M insert \cp _atuin_bind_up
+
+    bind \ct fzf_find_file
+    bind -M insert \ct fzf_find_file
 end
 set -g fish_key_bindings fish_hybrid_key_bindings
