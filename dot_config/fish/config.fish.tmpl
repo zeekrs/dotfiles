@@ -1,10 +1,18 @@
 if status is-interactive
-    atuin init fish | source
+    atuin init fish --disable-up-arrow | source
 
     starship init fish | source
 
     zoxide init fish | source
+
+    if test "$TERM_PROGRAM" = tmux
+        and not test -n "$VIM"
+        print_spark_line
+        macchina
+    end
+
 end
+
 
 #Editor 
 set -Ux EDITOR nvim

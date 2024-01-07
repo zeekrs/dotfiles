@@ -67,6 +67,18 @@
   Tool to manage /etc/hosts like a pro!
 - [atuin](https://github.com/ellie/atuin) -
   Magical shell history
+- [dog](https://github.com/ogham/dog) -
+  A command-line DNS client.
+- [jq](https://github.com/jqlang/jq) -
+  Command-line JSON processor
+- [jless](https://github.com/PaulJuliusMartinez/jless) -
+  A command-line JSON viewer designed for reading, exploring, and searching through JSON data.
+- [htmlq](https://github.com/mgdm/htmlq) -
+  Like jq, but for HTML.
+- [just](https://github.com/casey/just/tree/master) -
+  A handy way to save and run project-specific commands.
+- [macchina](https://github.com/macchina-cli/macchina) -
+  A system information frontend with an emphasis on performance.
 
 ### Installation
 
@@ -75,8 +87,14 @@
 - edit chezmoi config file
 
   ```bash
-    echo "[data]
-      email = \${YOUR_EMAIL}" > ~/.config/chezmoi/chezmoi.toml
+   echo "[data]
+      email = \${YOUR_EMAIL}
+      proxy_host = \${YOUR_HOST_PROXY_IF_EXSIT}
+      openai_api_host = \${YOUR_HOST_PROXY_IF_EXSIT}
+      [diff]
+      pager = \"delta --dark --paging=never\"
+      " > ~/.config/chezmoi/chezmoi.toml
+
   ```
 
 - initialize dot files

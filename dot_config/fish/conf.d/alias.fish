@@ -40,4 +40,6 @@ alias c=sgpt
 # https://github.com/alacritty/alacritty/issues/1208
 alias ssh='TERM=xterm-256color /usr/bin/ssh'
 
-alias clear='echo -en "\x1b[2J\x1b[1;1H" ; echo; seq 1 (tput cols) | sort -R | spark | lolcat'
+alias clear='echo -en "\x1b[2J\x1b[1;1H"; print_spark_line'
+
+alias j=just
