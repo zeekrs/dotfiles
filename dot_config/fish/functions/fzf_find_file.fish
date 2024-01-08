@@ -5,8 +5,8 @@ function fzf_find_file --description "Search the current directory. Replace the 
     set -f fzf_arguments --ansi
 
     if string match -rq '^(z |cd |ls |ll |la ).*' (commandline)
-        set --append find_cmd --type d --select-1
-        set --prepend fzf_arguments --no-multi
+        set --append find_cmd --type d
+        set --prepend fzf_arguments --no-multi --select-1
     else
         set --prepend fzf_arguments --multi --marker="*"
     end
@@ -16,10 +16,6 @@ function fzf_find_file --description "Search the current directory. Replace the 
     set -f expanded_token (eval echo -- $token)
     # unescape token because it's already quoted so backslashes will mess up the path
     set -f unescaped_exp_token (string unescape -- $expanded_token)
-
-    # find the argv[1] for commandline 
-
-    set -f cmd
 
     # If the current token is a directory and has a trailing slash,
     # then use it as fd's base directory.
