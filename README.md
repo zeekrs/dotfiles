@@ -85,6 +85,8 @@
   A log file highlighter
 - [xh](https://github.com/ducaale/xh) -
   Friendly and fast tool for sending HTTP requests
+- [orbstack](https://github.com/orbstack/orbstack) -
+  Fast, light, simple Docker containers & Linux machines for macOS
 
 ### Installation
 

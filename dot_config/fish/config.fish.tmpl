@@ -5,6 +5,10 @@ if status is-interactive
 
     zoxide init fish | source
 
+    orb completion fish | source
+
+    hostctl completion fish | source
+
     if test "$TERM_PROGRAM" = tmux
         and not test -n "$VIM"
         print_spark_line
