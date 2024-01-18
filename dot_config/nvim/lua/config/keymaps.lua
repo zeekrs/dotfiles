@@ -63,7 +63,7 @@ vim.keymap.set({ "n", "t" }, "<C-\\>", "<cmd>execute v:count1 . 'ToggleTerm'<CR>
 vim.keymap.set({ "n", "t" }, keys["<C-=>"], _f_terminal_toggle, { desc = "Toggle Float Terminal" })
 --
 vim.keymap.set({ "n", "t" }, "<leader>gg", _lazygit_terminal_toggle, { desc = "Toggle Lazy Git" })
-vim.keymap.set({ "n", "t" }, "<leader>gz", _yazi_terminal_toggle, { desc = "Toggle Yazi" })
+vim.keymap.set({ "n", "t" }, "<leader>Z", _yazi_terminal_toggle, { desc = "Toggle Yazi" })
 
 vim.keymap.set({ "t" }, "<esc><esc>", "<cmd>close<CR>", { desc = "Close Terminal" })
 
