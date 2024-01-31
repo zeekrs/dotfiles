@@ -31,9 +31,6 @@ set -gx PKG_CONFIG_PATH /opt/homebrew/opt/jpeg/lib/pkgconfig
 #k8s
 fish_add_path "$HOME/.krew/bin"
 
-# jetbrains starter
-fish_add_path "$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
-
 # terminfo path
 set -gx TERMINFO "$HOME/.local/share/terminfo"
 
