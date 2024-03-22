@@ -82,6 +82,17 @@ return {
       {
         prefix .. "c",
         function()
+          local input = vim.fn.input("Ask Copilot: ")
+          if input ~= "" then
+            vim.cmd("CopilotChat " .. input)
+          end
+        end,
+        mode = "n",
+        desc = "Ask input",
+      },
+      {
+        prefix .. "c",
+        function()
           local input = vim.fn.input("Ask Copilot(V): ")
           if input ~= "" then
             vim.cmd("CopilotChatVisual " .. input)

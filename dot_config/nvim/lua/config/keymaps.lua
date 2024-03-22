@@ -72,7 +72,6 @@ vim.keymap.del("n", "<leader>-")
 vim.keymap.del("n", "<leader>w-")
 vim.keymap.set("n", "<leader>\\", "<C-W>s", { desc = "Split window below" })
 vim.keymap.set("n", "<leader>w\\", "<C-W>s", { desc = "Split window below" })
-
 vim.keymap.set({ "i", "x", "n", "s" }, keys["<CMD-s>"], "<cmd>w<cr><esc>", { desc = "Save file" })
 
 -- insert mode emacs like editing
