@@ -34,17 +34,18 @@ local prompts = {
 }
 
 return {
-  {
-    "folke/which-key.nvim",
-    optional = true,
-    opts = {
-      defaults = {
-        [prefix] = { name = "+copilot chat" },
-      },
-    },
-  },
+  -- {
+  --   "folke/which-key.nvim",
+  --   optional = true,
+  --   opts = {
+  --     defaults = {
+  --       [prefix] = { name = "+copilot chat" },
+  --     },
+  --   },
+  -- },
   {
     "CopilotC-Nvim/CopilotChat.nvim",
+    enabled = false,
     opts = {
       show_help = "yes", -- Show help text for CopilotChatInPlace, default: yes
       prompts = prompts,

@@ -11,9 +11,15 @@ return {
     },
   },
   {
+    "vhyrro/luarocks.nvim",
+    priority = 1000, -- We'd like this plugin to load first out of the rest
+    config = true, -- This automatically runs `require("luarocks-nvim").setup()`
+  },
+  -- https://github.com/pysan3/Norg-Tutorial/blob/main/MIGRATION-v8.md
+  -- NOTE:  Run :Lazy build neorg
+  {
     "nvim-neorg/neorg",
-    build = ":Neorg sync-parsers",
-    dependencies = { { "nvim-neorg/neorg-telescope" } },
+    dependencies = { "luarocks.nvim", "nvim-neorg/neorg-telescope" },
     event = { "BufReadPre *.norg", "BufNewFile *.norg" },
     keys = {
       { prefix .. "w", "<cmd>Telescope neorg switch_workspace<CR>", desc = "Switch Workspace" },
