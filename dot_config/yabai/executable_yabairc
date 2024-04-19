@@ -82,36 +82,34 @@ yabai -m config normal_window_opacity 0.9
 
 ## Rules 
 
-yabai -m rule --add app='^(系统设置|System Settings)$' manage=off sticky=on 
-yabai -m rule --add app='^(系统信息|System Information)$' manage=off sticky=on layer=above
-yabai -m rule --add app='^(活动监视器|Activity Monitor)$' manage=off sticky=on layer=above
-yabai -m rule --add app='^(访达|Finder)$' manage=off 
-yabai -m rule --add app='^(计算器|Calculator)$' manage=off 
-yabai -m rule --add app='^(App Store)$' manage=off 
-yabai -m rule --add label="Software Update" title="Software Update" manage=off
+yabai -m rule --add app='^(系统设置|System Settings)$' manage=off sticky=on sub-layer=above
+yabai -m rule --add app='^(系统信息|System Information)$' manage=off sticky=on sub-layer=above
+yabai -m rule --add app='^(活动监视器|Activity Monitor)$' manage=off sticky=on sub-layer=above
+yabai -m rule --add app='^(访达|Finder)$' manage=off  sub-layer=normal
+yabai -m rule --add app='^(计算器|Calculator)$' manage=off sub-layer=normal
+yabai -m rule --add app='^(App Store)$' manage=off sub-layer=normal
+yabai -m rule --add label="^Software Update$" title="Software Update$" manage=off sub-layer=normal
 
 
-
-
-yabai -m rule --add app='SwitchHosts' manage=off sticky=on layer=above
-yabai -m rule --add app='1Password' manage=off sticky=on layer=above
-yabai -m rule --add app='Raycast' manage=off sticky=on layer=above
-yabai -m rule --add app='ClashX' manage=off sticky=on layer=above
-yabai -m rule --add app='EasyConnect' manage=off sticky=on layer=normal
-yabai -m rule --add app='CleanShot X' manage=off sticky=on layer=above
-yabai -m rule --add app='Logi Options+' manage=off sticky=on layer=above
-yabai -m rule --add app='The Unarchiver' manage=off sticky=on layer=above
-yabai -m rule --add app='^(Karabiner-Elements|Karabiner-EventViewer)$' manage=off sticky=on layer=above
-yabai -m rule --add app='^(微信|WeChat)$' manage=off sticky=on layer=normal
-yabai -m rule --add app='Telegram' manage=off sticky=on layer=normal
-yabai -m rule --add app='Discord' manage=off sticky=off layer=normal
-yabai -m rule --add app='Spark' manage=off sticky=on layer=normal
-yabai -m rule --add app='腾讯会议' manage=off sticky=off layer=normal
-yabai -m rule --add app='网易云音乐' manage=off sticky=on layer=normal
+yabai -m rule --add app='^1Password$' manage=off sticky=on sub-layer=above
+yabai -m rule --add app='^Raycast$' manage=off sticky=on sub-layer=above
+yabai -m rule --add app='^ClashX$' manage=off sticky=on sub-layer=above
+yabai -m rule --add app='^EasyConnect$' manage=off sticky=on sub-layer=normal
+yabai -m rule --add app='^CleanShot X$' manage=off sticky=on sub-layer=above
+yabai -m rule --add app='^Logi Options+$' manage=off sticky=on sub-layer=above
+yabai -m rule --add app='^The Unarchiver$' manage=off sticky=on sub-layer=above
+yabai -m rule --add app='^(Karabiner-Elements|Karabiner-EventViewer)$' manage=off sticky=on sub-layer=above
+yabai -m rule --add app='^(微信|WeChat)$' manage=off sticky=on sub-layer=normal
+yabai -m rule --add app='^Telegram$' manage=off sticky=on sub-layer=normal
+yabai -m rule --add app='^Discord$' manage=off sticky=off sub-layer=normal
+yabai -m rule --add app='^Spark$' manage=off sticky=on sub-layer=normal
+yabai -m rule --add app='^腾讯会议$' manage=off sticky=off sub-layer=normal
+yabai -m rule --add app='^网易云音乐$' manage=off sticky=on sub-layer=normal
 
 jetbrainsApps='^(IntelliJ IDEA|PyCharm|WebStorm|GoLand)$'
 # must be set setting >> appearance and behavior >> always show full path in the window title is enabled
-yabai -m rule --add app="JetBrains Toolbox" manage=off
+yabai -m rule --add app="^JetBrains Toolbox$" manage=off sub-layer=normal
 yabai -m rule --add app="${jetbrainsApps}" manage=on
 #yabai -m rule --add app="${jetbrainsApps}" title="( – )" manage=on
 
+yabai -m rule --apply
