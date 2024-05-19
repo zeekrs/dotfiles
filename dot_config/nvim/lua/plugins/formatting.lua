@@ -7,38 +7,16 @@ return {
     end,
   },
   {
-    "nvimtools/none-ls.nvim",
-    optional = true,
-    opts = function(_, opts)
-      local nls = require("null-ls")
-      opts.sources = opts.sources or {}
-      table.insert(opts.sources, nls.builtins.formatting.prettier)
-      table.insert(
-        opts.sources,
-        nls.builtins.formatting.biome.with({
-          args = {
-            "check",
-            "--apply",
-            "--skip-errors",
-            "--formatter-enabled=true",
-            "--organize-imports-enabled=true",
-            "$FILENAME",
-          },
-        })
-      )
-    end,
-  },
-  {
     "stevearc/conform.nvim",
     optional = true,
     opts = {
       formatters_by_ft = {
-        ["javascript"] = { "biome" },
-        ["javascriptreact"] = { "biome" },
-        ["typescript"] = { "biome" },
-        ["typescriptreact"] = { "biome" },
-        ["json"] = { "biome" },
-        ["jsonc"] = { "biome" },
+        ["javascript"] = { "biome-check" },
+        ["javascriptreact"] = { "biome-check" },
+        ["typescript"] = { "biome-check" },
+        ["typescriptreact"] = { "biome-check" },
+        ["json"] = { "biome-check" },
+        ["jsonc"] = { "biome-check" },
         ["vue"] = { "prettier" },
         ["css"] = { "prettier" },
         ["scss"] = { "prettier" },

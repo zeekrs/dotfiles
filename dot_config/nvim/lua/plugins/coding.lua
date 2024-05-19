@@ -8,7 +8,6 @@ return {
         local line, col = unpack(vim.api.nvim_win_get_cursor(0))
         return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
       end
-      local luasnip = require("luasnip")
       local cmp = require("cmp")
 
       -- auto pairs <cr>
@@ -21,8 +20,10 @@ return {
             cmp.select_next_item()
             -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
             -- this way you will only jump inside the snippet region
-          elseif luasnip.expand_or_jumpable() then
-            luasnip.expand_or_jump()
+          elseif vim.snippet.active({ direction = 1 }) then
+            vim.schedule(function()
+              vim.snippet.jump(1)
+            end)
           elseif has_words_before() then
             cmp.complete()
           else
@@ -32,8 +33,8 @@ return {
         ["<S-Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_prev_item()
-          elseif luasnip.jumpable(-1) then
-            luasnip.jump(-1)
+          elseif vim.snippet.active({ direction = -1 }) then
+            vim.snippet.jump(-1)
           else
             fallback()
           end
@@ -49,7 +50,7 @@ return {
     "windwp/nvim-autopairs",
     event = "InsertEnter",
     opts = {
-      check_ts = true,
+      -- check_ts = true,
       fast_wrap = {},
     },
     keys = {
@@ -70,10 +71,6 @@ return {
         desc = "Toggle auto pairs",
       },
     },
-  },
-  {
-    "echasnovski/mini.comment",
-    enabled = false,
   },
   {
     "numToStr/Comment.nvim",
@@ -105,78 +102,6 @@ return {
     },
   },
   {
-    "ThePrimeagen/refactoring.nvim",
-    keys = {
-      {
-        "<leader>re",
-        function()
-          require("refactoring").refactor("Extract Function")
-        end,
-        mode = "x",
-        desc = "Extract function",
-      },
-      {
-        "<leader>rf",
-        function()
-          require("refactoring").refactor("Extract Function To File")
-        end,
-        mode = "x",
-        desc = "Extract function to file",
-      },
-      {
-        "<leader>rv",
-        function()
-          require("refactoring").refactor("Extract Variable")
-        end,
-        mode = "x",
-        desc = "Extract variable",
-      },
-      {
-        "<leader>rI",
-        function()
-          require("refactoring").refactor("Inline Function")
-        end,
-        mode = "n",
-        desc = "Inline function",
-      },
-      {
-        "<leader>ri",
-        function()
-          require("refactoring").refactor("Inline Variable")
-        end,
-        mode = { "x", "n" },
-        desc = "Inline variable",
-      },
-      {
-        "<leader>rb",
-        function()
-          require("refactoring").refactor("Extract Block")
-        end,
-        mode = "n",
-        desc = "Extract block",
-      },
-      {
-        "<leader>rf",
-        function()
-          require("refactoring").refactor("Extract Block To File")
-        end,
-        mode = "n",
-        desc = "Extract block to file",
-      },
-
-      {
-        "<leader>rr",
-        function()
-          require("telescope").extensions.refactoring.refactors()
-        end,
-        mode = { "n", "x" },
-        desc = "Extract block to file",
-      },
-    },
-    config = true,
-  },
-
-  {
     "andrewferrier/debugprint.nvim",
     opts = {},
     version = "*",
@@ -197,96 +122,6 @@ return {
     opts = {
       use_default_keymaps = false,
       max_join_length = 65536,
-    },
-  },
-  -- Better increase/descrease
-  {
-    "monaqa/dial.nvim",
-    config = function()
-      local augend = require("dial.augend")
-      require("dial.config").augends:register_group({
-        default = {
-          augend.integer.alias.decimal,
-          augend.integer.alias.hex,
-          augend.integer.alias.binary,
-          augend.date.alias["%Y/%m/%d"],
-          augend.date.alias["%Y-%m-%d"],
-          augend.date.alias["%m/%d"],
-          augend.date.alias["%H:%M"],
-          augend.date.alias["%Y年%-m月%-d日"],
-          augend.constant.alias.bool,
-          augend.constant.alias.alpha,
-          augend.constant.alias.Alpha,
-          augend.constant.alias.semver,
-        },
-      })
-    end,
-    keys = {
-      {
-        "<C-a>",
-        function()
-          return require("dial.map").manipulate("increment", "normal")
-        end,
-        desc = "Increment",
-        mode = "n",
-      },
-      {
-        "<C-x>",
-        function()
-          return require("dial.map").manipulate("decrement", "normal")
-        end,
-        desc = "Decrement",
-        mode = "n",
-      },
-      {
-        "g<C-a>",
-        function()
-          return require("dial.map").manipulate("increment", "gnormal")
-        end,
-        desc = "Increment",
-        mode = "n",
-      },
-      {
-        "g<C-x>",
-        function()
-          return require("dial.map").manipulate("decrement", "gnormal")
-        end,
-        desc = "Decrement",
-        mode = "n",
-      },
-
-      {
-        "<C-a>",
-        function()
-          return require("dial.map").manipulate("increment", "visual")
-        end,
-        desc = "Increment",
-        mode = "v",
-      },
-      {
-        "<C-x>",
-        function()
-          return require("dial.map").manipulate("decrement", "visual")
-        end,
-        desc = "Decrement",
-        mode = "v",
-      },
-      {
-        "g<C-a>",
-        function()
-          return require("dial.map").manipulate("increment", "gvisual")
-        end,
-        desc = "Increment",
-        mode = "v",
-      },
-      {
-        "g<C-x>",
-        function()
-          return require("dial.map").manipulate("decrement", "gvisual")
-        end,
-        desc = "Decrement",
-        mode = "v",
-      },
     },
   },
   {

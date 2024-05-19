@@ -100,6 +100,7 @@ yabai -m rule --add app='^Logi Options+$' manage=off sticky=on sub-layer=above
 yabai -m rule --add app='^The Unarchiver$' manage=off sticky=on sub-layer=above
 yabai -m rule --add app='^(Karabiner-Elements|Karabiner-EventViewer)$' manage=off sticky=on sub-layer=above
 yabai -m rule --add app='^(微信|WeChat)$' manage=off sticky=on sub-layer=normal
+yabai -m rule --add app='^(QQ)$' manage=off sticky=on sub-layer=normal
 yabai -m rule --add app='^Telegram$' manage=off sticky=on sub-layer=normal
 yabai -m rule --add app='^Discord$' manage=off sticky=off sub-layer=normal
 yabai -m rule --add app='^Spark$' manage=off sticky=on sub-layer=normal
@@ -109,7 +110,9 @@ yabai -m rule --add app='^网易云音乐$' manage=off sticky=on sub-layer=norma
 jetbrainsApps='^(IntelliJ IDEA|PyCharm|WebStorm|GoLand)$'
 # must be set setting >> appearance and behavior >> always show full path in the window title is enabled
 yabai -m rule --add app="^JetBrains Toolbox$" manage=off sub-layer=normal
-yabai -m rule --add app="${jetbrainsApps}" manage=on
-#yabai -m rule --add app="${jetbrainsApps}" title="( – )" manage=on
+# yabai -m rule --add app="${jetbrainsApps}" manage=on
+yabai -m rule --add app="${jetbrainsApps}"  manage=off
+
+yabai -m rule --add app="${jetbrainsApps}" title="^$"  manage=on
 
 yabai -m rule --apply

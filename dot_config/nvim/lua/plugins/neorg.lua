@@ -1,5 +1,4 @@
 local prefix = "<leader>o"
-local keys = require("config.keys")
 return {
   {
     "folke/which-key.nvim",
@@ -178,8 +177,7 @@ return {
             config = { extensions = "all" },
           },
           ["core.summary"] = {},
-          -- NOTE: works neovim 0.10
-          -- ["core.ui.calendar"] = {},
+          ["core.ui.calendar"] = {},
           ["core.integrations.telescope"] = {},
         },
       })

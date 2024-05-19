@@ -9,6 +9,8 @@ if status is-interactive
 
     hostctl completion fish | source
 
+    fzf --fish | source
+
     if test "$TERM_PROGRAM" = tmux
         and not test -n "$VIM"
         print_spark_line
