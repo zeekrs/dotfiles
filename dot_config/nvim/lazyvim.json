@@ -1,11 +1,13 @@
 {
   "extras": [
+    "lazyvim.plugins.extras.coding.luasnip",
     "lazyvim.plugins.extras.coding.mini-surround",
     "lazyvim.plugins.extras.coding.yanky",
     "lazyvim.plugins.extras.dap.core",
     "lazyvim.plugins.extras.dap.nlua",
     "lazyvim.plugins.extras.editor.aerial",
     "lazyvim.plugins.extras.editor.dial",
+    "lazyvim.plugins.extras.editor.illuminate",
     "lazyvim.plugins.extras.editor.navic",
     "lazyvim.plugins.extras.editor.refactoring",
     "lazyvim.plugins.extras.formatting.black",
@@ -14,6 +16,7 @@
     "lazyvim.plugins.extras.lang.helm",
     "lazyvim.plugins.extras.lang.java",
     "lazyvim.plugins.extras.lang.json",
+    "lazyvim.plugins.extras.lang.kotlin",
     "lazyvim.plugins.extras.lang.markdown",
     "lazyvim.plugins.extras.lang.python",
     "lazyvim.plugins.extras.lang.python-semshi",
@@ -29,7 +32,7 @@
     "lazyvim.plugins.extras.util.startuptime"
   ],
   "news": {
-    "NEWS.md": "4944"
+    "NEWS.md": "4964"
   },
   "version": 4
 }
