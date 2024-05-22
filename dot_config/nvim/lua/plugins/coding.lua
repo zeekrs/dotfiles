@@ -1,7 +1,5 @@
 return {
   -- override cmp keymaps
-  --
-  --
   {
     "hrsh7th/nvim-cmp",
     opts = function(_, opts)
@@ -10,7 +8,6 @@ return {
         local line, col = unpack(vim.api.nvim_win_get_cursor(0))
         return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
       end
-      local luasnip = require("luasnip")
       local cmp = require("cmp")
 
       -- auto pairs <cr>
@@ -21,10 +18,12 @@ return {
         ["<Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_next_item()
-            -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
-            -- this way you will only jump inside the snippet region
-          elseif luasnip.expand_or_jumpable() then
-            luasnip.expand_or_jump()
+          -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
+          -- this way you will only jump inside the snippet region
+          elseif vim.snippet.active({ direction = 1 }) then
+            vim.schedule(function()
+              vim.snippet.jump(1)
+            end)
           elseif has_words_before() then
             cmp.complete()
           else
@@ -34,14 +33,24 @@ return {
         ["<S-Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_prev_item()
-          elseif luasnip.jumpable(-1) then
-            luasnip.jump(-1)
+          elseif vim.snippet.active({ direction = -1 }) then
+            vim.snippet.jump(-1)
           else
             fallback()
           end
         end, { "i", "s" }),
       })
     end,
+  },
+  {
+    "garymjr/nvim-snippets",
+    opts = {
+      extended_filetypes = {
+        typescript = { "javascript" },
+        typescriptreact = { "javascript" },
+        javascriptreact = { "javascript" },
+      },
+    },
   },
   {
     "echasnovski/mini.pairs",
@@ -74,10 +83,24 @@ return {
     },
   },
   {
-    "numToStr/Comment.nvim",
+    "folke/ts-comments.nvim",
+    enabled = false,
+  },
+  {
+    "JoosepAlviste/nvim-ts-context-commentstring",
+    lazy = true,
     opts = {
-      pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
+      enable_autocmd = false,
     },
+  },
+  {
+    "numToStr/Comment.nvim",
+    dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },
+    opts = function()
+      return {
+        pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
+      }
+    end,
     event = "VeryLazy",
   },
   {
