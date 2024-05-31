@@ -43,16 +43,6 @@ return {
     end,
   },
   {
-    "garymjr/nvim-snippets",
-    opts = {
-      extended_filetypes = {
-        typescript = { "javascript" },
-        typescriptreact = { "javascript" },
-        javascriptreact = { "javascript" },
-      },
-    },
-  },
-  {
     "echasnovski/mini.pairs",
     enabled = false,
   },
@@ -106,7 +96,7 @@ return {
   {
     "danymat/neogen",
     opts = {
-      snippet_engine = "luasnip",
+      snippet_engine = "nvim",
     },
     keys = {
       {
@@ -116,13 +106,6 @@ return {
         end,
         desc = "Neogen",
       },
-    },
-  },
-  {
-    "gbprod/yanky.nvim",
-    keys = {
-      { "p", "<Plug>(YankyPutAfter)", mode = { "n" }, desc = "Put yanked text after cursor" },
-      { "p", "<Plug>(YankyPutBefore)", mode = { "x" }, desc = "Put yanked text after cursor without copy" },
     },
   },
   {

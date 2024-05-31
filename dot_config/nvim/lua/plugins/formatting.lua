@@ -4,6 +4,7 @@ return {
     opts = function(_, opts)
       table.insert(opts.ensure_installed, "prettier")
       table.insert(opts.ensure_installed, "biome")
+      table.insert(opts.ensure_installed, "black")
     end,
   },
   {
@@ -27,6 +28,7 @@ return {
         ["markdown.mdx"] = { "prettier" },
         ["graphql"] = { "prettier" },
         ["handlebars"] = { "prettier" },
+        ["python"] = { "black" },
       },
     },
   },
