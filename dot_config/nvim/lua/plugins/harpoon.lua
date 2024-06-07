@@ -1,25 +1,13 @@
-local prefix = "<leader><space>"
-
 return {
-
-  {
-    "folke/which-key.nvim",
-    optional = true,
-    opts = {
-      defaults = {
-        [prefix] = { name = "+harpoon" },
-      },
-    },
-  },
-
   {
     "ThePrimeagen/harpoon",
     branch = "harpoon2",
-    config = function(_, opts)
-      require("harpoon"):setup(opts)
-    end,
+    opts = {
+      settings = {
+        save_on_toggle = true,
+      },
+    },
     keys = function()
-      -- basic telescope configuration
       local conf = require("telescope.config").values
       local function toggle_telescope(harpoon_files)
         local file_paths = {}
@@ -39,43 +27,44 @@ return {
           :find()
       end
       local keys = {
+        { "<leader><space>", "", desc = "+harpoon" },
         {
-          prefix .. "a",
+          "<leader><space>a",
           function()
             require("harpoon"):list():add()
           end,
           desc = "Add file",
         },
         {
-          prefix .. "d",
+          "<leader><space>d",
           function()
             require("harpoon"):list():remove()
           end,
           desc = "Remove file",
         },
         {
-          prefix .. "c",
+          "<leader><space>c",
           function()
             require("harpoon"):list():clear()
           end,
           desc = "Clear files",
         },
         {
-          prefix .. "e",
+          "<leader><space>e",
           function()
             require("harpoon").ui:toggle_quick_menu(require("harpoon"):list())
           end,
           desc = "Toggle quick menu",
         },
         {
-          prefix .. "t",
+          "<leader><space>t",
           function()
             toggle_telescope(require("harpoon"):list())
           end,
           desc = "Toggle telescope",
         },
         {
-          prefix .. "g",
+          "<leader><space>g",
           function()
             vim.ui.input({ prompt = "Harpoon mark index: " }, function(input)
               local num = tonumber(input)
@@ -86,12 +75,12 @@ return {
           end,
           desc = "Goto index of mark",
         },
-        { prefix .. "m", "<cmd>Telescope harpoon marks<CR>", desc = "Show marks in Telescope" },
+        { "<leader><space>m", "<cmd>Telescope harpoon marks<CR>", desc = "Show marks in Telescope" },
       }
 
       for i = 1, 5 do
         table.insert(keys, {
-          prefix .. i,
+          "<leader><space>" .. i,
           function()
             require("harpoon"):list():select(i)
           end,

@@ -1,14 +1,4 @@
-local prefix = "<leader>o"
 return {
-  {
-    "folke/which-key.nvim",
-    optional = true,
-    opts = {
-      defaults = {
-        [prefix] = { name = "+org" },
-      },
-    },
-  },
   {
     "vhyrro/luarocks.nvim",
     priority = 1000, -- We'd like this plugin to load first out of the rest
@@ -21,11 +11,12 @@ return {
     dependencies = { "luarocks.nvim", "nvim-neorg/neorg-telescope" },
     event = { "BufReadPre *.norg", "BufNewFile *.norg" },
     keys = {
-      { prefix .. "w", "<cmd>Telescope neorg switch_workspace<CR>", desc = "Switch Workspace" },
-      { prefix .. "f", "<cmd>Telescope neorg find_norg_files<CR>", desc = "Find Files" },
-      { prefix .. "i", "<cmd>Neorg index<CR>", desc = "Go to index" },
-      { prefix .. "r", "<cmd>Neorg return<CR>", desc = "Return" },
-      { prefix .. "j", "<cmd>Neorg journal today<CR>", desc = "Journal" },
+      { "<leader>o", "", desc = "+org" },
+      { "<leader>ow", "<cmd>Telescope neorg switch_workspace<CR>", desc = "Switch Workspace" },
+      { "<leader>of", "<cmd>Telescope neorg find_norg_files<CR>", desc = "Find Files" },
+      { "<leader>oi", "<cmd>Neorg index<CR>", desc = "Go to index" },
+      { "<leader>or", "<cmd>Neorg return<CR>", desc = "Return" },
+      { "<leader>oj", "<cmd>Neorg journal today<CR>", desc = "Journal" },
     },
     config = function()
       require("neorg").setup({
