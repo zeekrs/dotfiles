@@ -87,6 +87,8 @@
   Friendly and fast tool for sending HTTP requests
 - [orbstack](https://github.com/orbstack/orbstack) -
   Fast, light, simple Docker containers & Linux machines for macOS
+- [translate-shell](https://github.com/soimort/translate-shell)
+  Command-line translator using Google Translate, Bing Translator, Yandex.Translate, etc.
 
 ### Installation
 
