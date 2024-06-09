@@ -82,3 +82,9 @@ vim.keymap.set("i", "<C-f>", "<Right>", { noremap = true, silent = false })
 vim.keymap.set("i", "<C-b>", "<Left>", { noremap = true, silent = false })
 vim.keymap.set("i", "<C-p>", "<Up>", { noremap = true, silent = false })
 vim.keymap.set("i", "<C-n>", "<Down>", { noremap = true, silent = false })
+
+-- command mode emacs like editing
+vim.keymap.set("c", "<C-a>", "<Home>", { noremap = true, silent = false })
+vim.keymap.set("c", "<C-e>", "<End>", { noremap = true, silent = false })
+vim.keymap.set("c", "<C-f>", "<Right>", { noremap = true, silent = false })
+vim.keymap.set("c", "<C-b>", "<Left>", { noremap = true, silent = false })
