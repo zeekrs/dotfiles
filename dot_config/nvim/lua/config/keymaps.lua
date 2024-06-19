@@ -60,7 +60,6 @@ vim.keymap.del("n", "<leader>gG")
 
 vim.keymap.set({ "n", "t" }, "<C-\\>", "<cmd>execute v:count1 . 'ToggleTerm'<CR>", { desc = "Toggle Float Terminal" })
 
-vim.keymap.set({ "n", "t" }, keys["<C-=>"], _f_terminal_toggle, { desc = "Toggle Float Terminal" })
 --
 vim.keymap.set({ "n", "t" }, "<leader>gg", _lazygit_terminal_toggle, { desc = "Toggle Lazy Git" })
 vim.keymap.set({ "n", "t" }, "<leader>Z", _yazi_terminal_toggle, { desc = "Toggle Yazi" })
@@ -74,6 +73,15 @@ vim.keymap.set("n", "<leader>\\", "<C-W>s", { desc = "Split window below" })
 vim.keymap.set("n", "<leader>w\\", "<C-W>s", { desc = "Split window below" })
 
 vim.keymap.set({ "i", "x", "n", "s" }, keys["<CMD-s>"], "<cmd>w<cr><esc>", { desc = "Save file" })
+
+-- hack keys
+vim.keymap.set({ "i", "x", "n", "s" }, keys["<C-i>"], "<C-i>")
+
+vim.keymap.set({ "n", "t" }, keys["<C-=>"], _f_terminal_toggle, { desc = "Toggle Float Terminal" })
+
+vim.keymap.set({ "i", "x", "s" }, keys["<C-=>"], "<C-=>")
+
+vim.keymap.set({ "i", "x", "n", "s" }, keys["<C-m>"], "<C-m>")
 
 -- insert mode emacs like editing
 vim.keymap.set("i", "<C-a>", "<Home>", { noremap = true, silent = false })

@@ -1,5 +1,6 @@
 return {
   -- override cmp keymaps
+  -- nvim-snip
   {
     "hrsh7th/nvim-cmp",
     opts = function(_, opts)
@@ -10,38 +11,76 @@ return {
       end
       local cmp = require("cmp")
 
-      -- auto pairs <cr>
       local cmp_autopairs = require("nvim-autopairs.completion.cmp")
       cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
-      opts.mapping = vim.tbl_extend("force", opts.mapping, {
-        ["<Tab>"] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.select_next_item()
-          -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
-          -- this way you will only jump inside the snippet region
-          elseif vim.snippet.active({ direction = 1 }) then
-            vim.schedule(function()
-              vim.snippet.jump(1)
-            end)
-          elseif has_words_before() then
-            cmp.complete()
-          else
-            fallback()
-          end
-        end, { "i", "s" }),
-        ["<S-Tab>"] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.select_prev_item()
-          elseif vim.snippet.active({ direction = -1 }) then
-            vim.snippet.jump(-1)
-          else
-            fallback()
-          end
-        end, { "i", "s" }),
-      })
+      if LazyVim.has_extra("coding.luasnip") then
+        local luasnip = require("luasnip")
+        opts.mapping = vim.tbl_extend("force", opts.mapping, {
+
+          ["<CR>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              if luasnip.expandable() then
+                luasnip.expand()
+              else
+                cmp.confirm({
+                  select = true,
+                })
+              end
+            else
+              fallback()
+            end
+          end),
+          ["<Tab>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.select_next_item()
+            elseif luasnip.locally_jumpable(1) then
+              luasnip.jump(1)
+            elseif has_words_before() then
+              cmp.complete()
+            else
+              fallback()
+            end
+          end, { "i", "s" }),
+          ["<S-Tab>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.select_prev_item()
+            elseif luasnip.locally_jumpable(-1) then
+              luasnip.jump(-1)
+            else
+              fallback()
+            end
+          end, { "i", "s" }),
+        })
+      else
+        opts.mapping = vim.tbl_extend("force", opts.mapping, {
+          ["<Tab>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.select_next_item()
+            elseif vim.snippet.active({ direction = 1 }) then
+              vim.schedule(function()
+                vim.snippet.jump(1)
+              end)
+            elseif has_words_before() then
+              cmp.complete()
+            else
+              fallback()
+            end
+          end, { "i", "s" }),
+          ["<S-Tab>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.select_prev_item()
+            elseif vim.snippet.active({ direction = -1 }) then
+              vim.snippet.jump(-1)
+            else
+              fallback()
+            end
+          end, { "i", "s" }),
+        })
+      end
     end,
   },
+
   {
     "echasnovski/mini.pairs",
     enabled = false,
@@ -95,9 +134,6 @@ return {
   },
   {
     "danymat/neogen",
-    opts = {
-      snippet_engine = "nvim",
-    },
     keys = {
       {
         "<leader>cg",
