@@ -46,8 +46,6 @@
   Is release management tool designed for teams.
 - [lazygit](https://github.com/jesseduffield/lazygit) -
   Simple terminal UI for git commands
-- [neofetch](https://github.com/dylanaraps/neofetch) -
-  Command-line system information tool
 - [eza](https://github.com/eza-community/eza) Modern replacement for ‘ls’.
 - [fd](https://github.com/sharkdp/fd) -
   Simple, fast and user-friendly alternative to 'find'
@@ -79,6 +77,8 @@
   A handy way to save and run project-specific commands.
 - [macchina](https://github.com/macchina-cli/macchina) -
   A system information frontend with an emphasis on performance.
+- [onefetch](https://github.com/o2sh/onefetch) -
+  Command-line Git information tool
 - [ouch](https://github.com/ouch-org/ouch) -
   Stands for Obvious Unified Compression Helper.
 - [tailspin](https://github.com/bensadeh/tailspin) -
