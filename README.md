@@ -89,6 +89,8 @@
   Fast, light, simple Docker containers & Linux machines for macOS
 - [translate-shell](https://github.com/soimort/translate-shell)
   Command-line translator using Google Translate, Bing Translator, Yandex.Translate, etc.
+- [poetry](https://github.com/python-poetry/poetry)
+  Python packaging and dependency management made easy
 
 ### Installation
 
