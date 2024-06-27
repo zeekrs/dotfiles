@@ -10,6 +10,7 @@ return {
     "nvim-neorg/neorg",
     dependencies = { "luarocks.nvim", "nvim-neorg/neorg-telescope" },
     event = { "BufReadPre *.norg", "BufNewFile *.norg" },
+    enabled = true,
     keys = {
       { "<leader>o", "", desc = "+org" },
       { "<leader>ow", "<cmd>Telescope neorg switch_workspace<CR>", desc = "Switch Workspace" },
