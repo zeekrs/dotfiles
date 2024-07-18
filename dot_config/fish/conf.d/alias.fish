@@ -1,6 +1,6 @@
 # instead default
 alias v="nvim ."
-alias vim=nvim
+alias vim= nvim
 alias vimdiff="nvim -d"
 
 alias ls='eza --color=always --group-directories-first'
