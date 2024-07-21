@@ -13,14 +13,14 @@ return {
     },
   },
   {
-    "nvim-pack/nvim-spectre",
+    "MagicDuck/grug-far.nvim",
     keys = {
       {
         "<leader>sp",
         function()
-          require("spectre").open_file_search({ select_word = true })
+          require("grug-far").grug_far({ prefills = { search = vim.fn.expand("<cword>"), flags = vim.fn.expand("%") } })
         end,
-        desc = "Replace in Current Files (Spectre)",
+        desc = "Replace in Current Files",
       },
     },
   },
