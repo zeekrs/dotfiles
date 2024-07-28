@@ -64,7 +64,8 @@ vim.keymap.set({ "n", "t" }, "<C-\\>", "<cmd>execute v:count1 . 'ToggleTerm'<CR>
 vim.keymap.set({ "n", "t" }, "<leader>gg", _lazygit_terminal_toggle, { desc = "Toggle Lazy Git" })
 vim.keymap.set({ "n", "t" }, "<leader>Z", _yazi_terminal_toggle, { desc = "Toggle Yazi" })
 
-vim.keymap.set({ "t" }, "<esc><esc>", "<cmd>close<CR>", { desc = "Close Terminal" })
+-- close terminal
+vim.keymap.set({ "t" }, "<esc><esc>", "<cmd>close<CR>", { desc = "which_key_ignore" })
 
 -- reset split window
 vim.keymap.del("n", "<leader>-")
