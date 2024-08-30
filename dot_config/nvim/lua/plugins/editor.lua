@@ -18,7 +18,7 @@ return {
       {
         "<leader>sp",
         function()
-          require("grug-far").grug_far({ prefills = { search = vim.fn.expand("<cword>"), flags = vim.fn.expand("%") } })
+          require("grug-far").open({ prefills = { search = vim.fn.expand("<cword>"), flags = vim.fn.expand("%") } })
         end,
         desc = "Replace in Current Files",
       },

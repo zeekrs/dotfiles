@@ -8,7 +8,7 @@ local keys = require("config.keys")
 local Terminal = require("toggleterm.terminal").Terminal
 
 local f_termianl = Terminal:new({
-  display_name = "flaot terminal",
+  display_name = "float terminal",
   direction = "float",
   dir = "git_dir",
   id = 99,
