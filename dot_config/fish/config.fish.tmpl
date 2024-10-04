@@ -28,17 +28,18 @@ set -Ux EDITOR nvim
 
 set -Ux REACT_EDITOR nvim
 
+
+{{if hasKey . "proxy_host"}} 
 # proxy 
-
-set proxy_host 127.0.0.1:7890
-
-
-# open ai 
-{{if hasKey . "openai_api_host"}} 
-set -x OPENAI_API_HOST {{ .openai_api_host }}
+  set proxy_host {{ .proxy_host }}
 {{end}}
 
+{{if hasKey . "openai_api_host"}} 
+# open ai 
+set -x OPENAI_API_HOST {{ .openai_api_host }}
 set -x OPENAI_API_KEY {{ onepasswordRead "op://Personal/OpenAI/credential" }}
+{{end}}
+
 
 # config file
 set -Ux XDG_CONFIG_HOME "$HOME/.config"
