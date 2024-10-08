@@ -37,3 +37,12 @@ repositories:
   password: ""
   url: https://rancher-mirror.rancher.cn/server-charts/stable
   username: ""
+- caFile: ""
+  certFile: ""
+  insecure_skip_tls_verify: false
+  keyFile: ""
+  name: cert-manager-alidns-webhook
+  pass_credentials_all: false
+  password: ""
+  url: https://devmachine-fr.github.io/cert-manager-alidns-webhook
+  username: ""
