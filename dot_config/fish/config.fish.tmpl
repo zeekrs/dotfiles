@@ -29,13 +29,14 @@ set -Ux EDITOR nvim
 set -Ux REACT_EDITOR nvim
 
 
-{{if hasKey . "proxy_host"}} 
+{{if hasKey . "proxy_host"}}
 # proxy 
-  set proxy_host {{ .proxy_host }}
+set proxy_host {{ .proxy_host }}
 {{end}}
 
-{{if hasKey . "openai_api_host"}} 
+{{if hasKey . "openai_api_host"}}
 # open ai 
+set -x OPENAI_API_BASE {{ .openai_api_host }}
 set -x OPENAI_API_HOST {{ .openai_api_host }}
 set -x OPENAI_API_KEY {{ onepasswordRead "op://Personal/OpenAI/credential" }}
 {{end}}
@@ -57,5 +58,3 @@ set -x CC clang
 
 # volta 
 set -x VOLTA_FEATURE_PNPM 1
-
-

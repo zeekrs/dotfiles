@@ -42,8 +42,8 @@
   Customizable cross-platform graphical process/system monitor for the terminal
 - [delta](https://github.com/dandavison/delta) -
   A syntax-highlighting pager for git, diff, and grep output
-- [commitizen](https://github.com/commitizen-tools/commitizen) -
-  Is release management tool designed for teams.
+- [czg](https://github.com/Zhengqbbb/cz-git) -
+  czg 🛠️ DX first and more engineered, lightweight, customizable, standard output format Commitizen adapter and CLI
 - [lazygit](https://github.com/jesseduffield/lazygit) -
   Simple terminal UI for git commands
 - [eza](https://github.com/eza-community/eza) Modern replacement for ‘ls’.

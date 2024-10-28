@@ -45,3 +45,6 @@ fish_add_path /opt/homebrew/opt/ruby/bin
 
 #jet brains ide
 fish_add_path "/Users/zeekrs/Library/Application Support/JetBrains/Toolbox/scripts"
+
+#conda
+fish_add_path /opt/homebrew/anaconda3/bin

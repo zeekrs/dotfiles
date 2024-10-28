@@ -50,7 +50,7 @@ keybinding:
     sortOrder: s
 customCommands:
   - key: "c"
-    command: "git cz c"
+    command: "git czg ai -N=3"
     description: "commit with commitizen"
     context: "files"
     loadingText: "opening commitizen commit tool"
