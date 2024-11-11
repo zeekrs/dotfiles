@@ -1,6 +1,6 @@
 return {
   {
-    "nvim-telescope/telescope.nvim",
+    "ibhagwan/fzf-lua",
     keys = {
       -- disable the keymap for find files
       { "<leader><space>", false },

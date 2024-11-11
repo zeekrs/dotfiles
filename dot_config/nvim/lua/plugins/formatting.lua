@@ -5,6 +5,7 @@ return {
       table.insert(opts.ensure_installed, "prettier")
       table.insert(opts.ensure_installed, "biome")
       table.insert(opts.ensure_installed, "black")
+      table.insert(opts.ensure_installed, "xmlformatter")
     end,
   },
   {
@@ -29,6 +30,7 @@ return {
         ["graphql"] = { "prettier" },
         ["handlebars"] = { "prettier" },
         ["python"] = { "black" },
+        ["xml"] = { "xmlformat" },
       },
     },
   },
