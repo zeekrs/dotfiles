@@ -15,11 +15,11 @@ vim.keymap.set({ "n", "t" }, "<C-\\>", function()
 end, { desc = "which_key_ignore" })
 
 vim.keymap.set({ "n", "t" }, keys["<C-=>"], function()
-  Snacks.terminal(nil, { cwd = LazyVim.root.git() })
+  Snacks.terminal(nil, { win = { position = "float" } })
 end, { desc = "which_key_ignore" })
 -- yazi
 vim.keymap.set({ "n", "t" }, "<leader>Z", function()
-  Snacks.terminal("yazi", { cwd = LazyVim.root.git() })
+  Snacks.terminal("yazi", { cwd = LazyVim.root() })
 end, { desc = "Toggle Yazi" })
 
 -- reset split window
