@@ -7,9 +7,7 @@ fish_add_path fish_user_paths /opt/homebrew/bin
 # volta
 fish_add_path fish_user_paths "$HOME/.volta/bin"
 
-
-# rust
-fish_add_path "$HOME/.cargo/bin"
+fish_add_path fish_user_paths "$HOME/.local/bin"
 
 # go 
 set -x GOPATH $HOME/go
