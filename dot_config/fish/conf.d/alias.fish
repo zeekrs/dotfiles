@@ -34,8 +34,6 @@ alias cdtmp='cd $(mktemp -d /tmp/zeekrs-XXXXXX)'
 alias python=python3
 alias pip=pip3
 
-#chat gpt
-alias c=sgpt
 
 # https://github.com/alacritty/alacritty/issues/1208
 alias ssh='TERM=xterm-256color /usr/bin/ssh'

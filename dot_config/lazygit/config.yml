@@ -56,7 +56,7 @@ customCommands:
     loadingText: "opening commitizen commit tool"
     subprocess: true
   - key: "C"
-    command: "git czg ai -N=3"
+    command: "git czg ai"
     description: "commit with AI commitizen"
     context: "files"
     loadingText: "opening commitizen AI commit tool"

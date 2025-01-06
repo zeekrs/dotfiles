@@ -38,7 +38,8 @@ set proxy_host {{ .proxy_host }}
 # open ai 
 set -x OPENAI_API_BASE {{ .openai_api_host }}
 set -x OPENAI_API_HOST {{ .openai_api_host }}
-set -x OPENAI_API_KEY {{ onepasswordRead "op://Personal/OpenAI/credential" }}
+set -x OPENAI_API_KEY {{ .openai_api_key }}
+set -x OPENAI_API_MODEL {{ .openai_api_model }}
 {{end}}
 
 

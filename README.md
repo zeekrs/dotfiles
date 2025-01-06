@@ -103,6 +103,7 @@
       email = \${YOUR_EMAIL}
       proxy_host = \${YOUR_HOST_PROXY_IF_EXSIT}
       openai_api_host = \${YOUR_HOST_PROXY_IF_EXSIT}
+      openai_api_key = \${YOUR_OPEN_AI_KEY_IF_EXSIT}
       [diff]
       pager = \"delta --dark --paging=never\"
       " > ~/.config/chezmoi/chezmoi.toml

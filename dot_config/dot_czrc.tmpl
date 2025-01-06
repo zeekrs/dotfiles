@@ -1,6 +1,7 @@
 {
 {{if hasKey . "openai_api_host"}}
-  "openAIToken": "{{ onepasswordRead "op://Personal/OpenAI/credential" }}",
-  "apiEndpoint": "{{ .openai_api_host }}/v1"
+  "openAIToken": "{{ .openai_api_key }}",
+  "apiEndpoint": "{{ .openai_api_host }}/v1",
+  "apiModel":"{{.openai_api_model}}"
 {{end}}
 }
