@@ -91,6 +91,8 @@
   Command-line translator using Google Translate, Bing Translator, Yandex.Translate, etc.
 - [poetry](https://github.com/python-poetry/poetry)
   Python packaging and dependency management made easy
+- [gost](https://github.com/go-gost/gost)
+  GO Simple Tunnel - a simple tunnel written in golang
 
 ### Installation
 
