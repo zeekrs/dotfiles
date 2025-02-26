@@ -3,6 +3,7 @@
 return {
   "mrjones2014/smart-splits.nvim",
   lazy = true,
+  vscode = false,
   event = "VeryLazy",
   keys = {
     -- move
