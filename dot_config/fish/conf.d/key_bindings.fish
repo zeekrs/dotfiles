@@ -8,13 +8,16 @@ function fish_hybrid_key_bindings --description \
     bind \cg 'commandline -r lazygit; commandline -f execute'
     bind -M insert \cg 'commandline -r lazygit; commandline -f execute'
 
-    bind \cz 'commandline -r yazi; commandline -f execute'
-    bind -M insert \cz 'commandline -r yazi; commandline -f execute'
+    bind \cz 'commandline -r zz; commandline -f execute'
+    bind -M insert \cz 'commandline -r zz; commandline -f execute'
+
+    fzf_configure_bindings --variables=\cv --directory=\ct --history=
 
     bind \cp _atuin_bind_up
     bind -M insert \cp _atuin_bind_up
 
-    bind \ct fzf_find_file
-    bind -M insert \ct fzf_find_file
+    bind \cr _atuin_search
+    bind -M insert \cr _atuin_search
+
 end
 set -g fish_key_bindings fish_hybrid_key_bindings

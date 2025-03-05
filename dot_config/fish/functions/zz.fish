@@ -1,8 +1,8 @@
 function zz
-    set tmp (mktemp -t "zz-cwd.XXXXX")
+    set tmp (mktemp -t "zz-cwd.XXXXXX")
     yazi $argv --cwd-file="$tmp"
-    if set cwd (cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
-        cd -- "$cwd"
+    if set cwd (command cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+        builtin cd -- "$cwd"
     end
-    command rm -f -- "$tmp"
+    rm -f -- "$tmp"
 end

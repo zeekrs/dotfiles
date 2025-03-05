@@ -1,5 +1,7 @@
 if status is-interactive
-    atuin init fish --disable-up-arrow | source
+
+    set -gx ATUIN_NOBIND true
+    atuin init fish | source
 
     starship init fish | source
 
@@ -8,15 +10,6 @@ if status is-interactive
     orb completion fish | source
 
     hostctl completion fish | source
-
-    fzf --fish | source
-
-    if test "$TERM_PROGRAM" = tmux
-        and not test -n "$VIM"
-        print_spark_line
-        macchina
-    end
-
 end
 
 # Lang 
@@ -24,10 +17,9 @@ set -x LANG en_US.UTF-8
 set -x LC_ALL en_US.UTF-8
 
 #Editor 
-set -Ux EDITOR nvim
+set -x EDITOR nvim
 
-set -Ux REACT_EDITOR nvim
-
+set -x REACT_EDITOR nvim
 
 {{if hasKey . "proxy_host"}}
 # proxy 
@@ -42,13 +34,11 @@ set -x OPENAI_API_KEY {{ .openai_api_key }}
 set -x OPENAI_API_MODEL {{ .openai_api_model }}
 {{end}}
 
-
 # config file
 set -Ux XDG_CONFIG_HOME "$HOME/.config"
 
 # ripgrep
 set -x RIPGREP_CONFIG_PATH "$XDG_CONFIG_HOME/ripgrep/ripgreprc"
-
 
 # starship
 # ignore starship warnings
@@ -59,3 +49,6 @@ set -x CC clang
 
 # volta 
 set -x VOLTA_FEATURE_PNPM 1
+
+# onence call 
+# fish_config theme save "Catppuccin Mocha"
