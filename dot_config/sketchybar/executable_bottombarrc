@@ -1,0 +1,33 @@
+#!/usr/bin/env lua
+
+-- Add the sketchybar module to the package cpath (the module could be
+-- installed into the default search path then this would not be needed)
+package.cpath = package.cpath .. ";/Users/" .. os.getenv("USER") .. "/.local/share/sketchybar_lua/?.so"
+
+local initialize = require("bar")
+-- Require the sketchybar module
+Bar = require("sketchybar")
+
+-- Bundle the entire initial configuration into a single message to sketchybar
+-- This improves startup times drastically, try removing both the begin and end
+-- config calls to see the difference -- yeah..
+Bar.begin_config()
+initialize("bottom_bar", { position = "bottom", y_offset = 4.5 })
+require("default")
+require("events")
+require("items.volume")
+require("items.mic")
+require("items.music")
+require("items.windows")
+
+require("items.inputsource")
+require("items.email")
+require("items.wechat")
+require("items.github")
+require("items.media")
+
+Bar.hotload(true)
+Bar.end_config()
+-- Run the event loop of the sketchybar module (without this there will be no
+-- callback functions executed in the lua module)
+Bar.event_loop()

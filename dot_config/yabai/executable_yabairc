@@ -1,54 +1,40 @@
-## Initialize
+#!/bin/bash
+
+# Initialize
 
 # for this to work you must configure sudo such that
 # it will be able to run the command without password
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 sudo yabai --load-sa
 
+# Layout
 
-
-## Layout
-
-# default layout (can be bsp, stack or float)
+# bsp or float (default: float)
 yabai -m config layout bsp
-
-# Override default layout for space N only
-#yabai -m config --space N layout float
 
 # New window spawns to the right if vertical split, or bottom if horizontal split
 yabai -m config window_placement second_child
 
-
-## Border  has a bug of new version
-#yabai -m config window_border on
-#yabai -m config window_border_blur on
-#yabai -m config window_border_hidpi on
-#yabai -m config window_border_width 6
-#yabai -m config active_window_border_color 0xff775759
-#yabai -m config normal_window_border_color 0xff555555
-#yabai -m config insert_feedback_color 0xffd75f5f
-
-## Padding and gaps
+# Padding and gaps
 
 # Set all padding and gaps to 20pt (default: 0)
-yabai -m config top_padding     0
-yabai -m config bottom_padding  0
-yabai -m config left_padding    0
-yabai -m config right_padding   0
-yabai -m config window_gap      9
+yabai -m config top_padding 18
+yabai -m config bottom_padding 9
+yabai -m config left_padding 9
+yabai -m config right_padding 9
+yabai -m config window_gap 9
 
+# Status bar
+# add 20 padding to the top and 0 padding to the bottom of every space located on the main display
+yabai -m config external_bar all:59:59
 
+# Split ratios
 
-## Split ratios
-
-#Auto balance makes it so all windows always occupy the same space
 # on or off (default: off)
-yabai -m config auto_balance off
+yabai -m config auto_balance on
 
 # Floating point value between 0 and 1 (default: 0.5)
 yabai -m config split_ratio 0.5
-
-
 
 ## Mouse support
 
@@ -67,29 +53,52 @@ yabai -m config focus_follows_mouse off
 # set mouse follows focus mode (default: off)
 yabai -m config mouse_follows_focus off
 
-
-
+# Window modifications
 
 # modify window shadows (default: on, options: on, off, float)
-yabai -m config window_shadow on
+yabai -m config window_shadow float
 
 # window opacity (default: off)
 yabai -m config window_opacity on
 yabai -m config active_window_opacity 1.0
 yabai -m config normal_window_opacity 0.9
 
+# yabai -m config menubar_opacity 0.0
+#
 
+#Spaces
 
-## Rules 
+function setup_space() {
+
+  local idx=$1
+  local label=$2
+  local space=
+  space=$(yabai -m query --spaces --space "$idx")
+  if [ -z "$space" ]; then
+    yabai -m space --create
+  fi
+  yabai -m space "$idx" --label "$label"
+}
+
+setup_space 1 terminal
+setup_space 2 browser
+setup_space 3 work
+setup_space 4 debug
+setup_space 5 database
+setup_space 6 email
+setup_space 7 music
+setup_space 8 play
+setup_space 9 document
+
+## Rules
 
 yabai -m rule --add app='^(系统设置|System Settings)$' manage=off sticky=on sub-layer=above
 yabai -m rule --add app='^(系统信息|System Information)$' manage=off sticky=on sub-layer=above
 yabai -m rule --add app='^(活动监视器|Activity Monitor)$' manage=off sticky=on sub-layer=above
-yabai -m rule --add app='^(访达|Finder)$' manage=off  sub-layer=normal
+yabai -m rule --add app='^(访达|Finder)$' manage=off sub-layer=normal
 yabai -m rule --add app='^(计算器|Calculator)$' manage=off sub-layer=normal
 yabai -m rule --add app='^(App Store)$' manage=off sub-layer=normal
 yabai -m rule --add label="^Software Update$" title="Software Update$" manage=off sub-layer=normal
-
 
 yabai -m rule --add app='^1Password$' manage=off sticky=on sub-layer=above
 yabai -m rule --add app='^Raycast$' manage=off sticky=on sub-layer=above
@@ -103,16 +112,32 @@ yabai -m rule --add app='^(微信|WeChat)$' manage=off sticky=on sub-layer=norma
 yabai -m rule --add app='^(QQ)$' manage=off sticky=on sub-layer=normal
 yabai -m rule --add app='^Telegram$' manage=off sticky=on sub-layer=normal
 yabai -m rule --add app='^Discord$' manage=off sticky=off sub-layer=normal
-yabai -m rule --add app='^Spark$' manage=off sticky=on sub-layer=normal
 yabai -m rule --add app='^腾讯会议$' manage=off sticky=off sub-layer=normal
-yabai -m rule --add app='^网易云音乐$' manage=off sticky=on sub-layer=normal
+
+yabai -m rule --add app='^Alacritty$' space=^1
+yabai -m rule --add app='^(Arc|Google Chrome|Safari浏览器)$' space=^2
+yabai -m rule --add app='^Cursor$' space=^3
+yabai -m rule --add app='^微信开发者工具$' space=^4
+yabai -m rule --add app='^(TablePlus|Navicat Premium)$' space=^5
+yabai -m rule --add app='^Spark$' space=^6
+yabai -m rule --add app='^网易云音乐$' space=^7
 
 jetbrainsApps='^(IntelliJ IDEA|PyCharm|WebStorm|GoLand)$'
 # must be set setting >> appearance and behavior >> always show full path in the window title is enabled
 yabai -m rule --add app="^JetBrains Toolbox$" manage=off sub-layer=normal
 # yabai -m rule --add app="${jetbrainsApps}" manage=on
-yabai -m rule --add app="${jetbrainsApps}"  manage=off
+yabai -m rule --add app="${jetbrainsApps}" manage=off
 
-yabai -m rule --add app="${jetbrainsApps}" title="^$"  manage=on
+yabai -m rule --add app="${jetbrainsApps}" title="^$" manage=on space=^3
 
 yabai -m rule --apply
+
+yabai -m signal --add event=window_focused action="/opt/homebrew/bin/top_bar --trigger window_focus"
+yabai -m signal --add event=window_title_changed action="/opt/homebrew/bin/top_bar --trigger title_change"
+
+yabai -m signal --add event=window_focused action="/opt/homebrew/bin/bottom_bar --trigger window_focus"
+yabai -m signal --add event=window_title_changed action="/opt/homebrew/bin/bottom_bar --trigger title_change"
+
+/opt/homebrew/bin/top_bar --config ~/.config/sketchybar/topbarrc &
+/opt/homebrew/bin/bottom_bar --config ~/.config/sketchybar/bottombarrc &
+/opt/homebrew/bin/borders &

@@ -1,0 +1,5 @@
+{
+	"diagnostics.globals": ["Bar"],
+	"runtime.version": "Lua 5.4"
+}
+

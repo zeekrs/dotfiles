@@ -1,0 +1,6 @@
+Bar.add("event", "window_focus")
+Bar.add("event", "title_change")
+Bar.add("event", "layout_changed")
+Bar.add("event", "swap_state_and_spaces")
+Bar.add("event", "skhd_mode_change")
+Bar.add("event", "brew_update")

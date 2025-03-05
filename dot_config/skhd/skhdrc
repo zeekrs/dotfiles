@@ -1,20 +1,126 @@
-# Navigation
+# ################################################################ #
+# THE FOLLOWING IS AN EXPLANATION OF THE GRAMMAR THAT SKHD PARSES. #
+# FOR SIMPLE EXAMPLE MAPPINGS LOOK FURTHER DOWN THIS FILE..        #
+# ################################################################ #
 
-#0x32 `
-alt - 0x32 : yabai -m space --focus recent
-# focus and toggle fullscreen 
+# A list of all built-in modifier and literal keywords can
+# be found at https://github.com/koekeishiya/skhd/issues/1
 #
+# A hotkey is written according to the following rules:
+#
+#   hotkey       = <mode> '<' <action> | <action>
+#
+#   mode         = 'name of mode' | <mode> ',' <mode>
+#
+#   action       = <keysym> '[' <proc_map_lst> ']' | <keysym> '->' '[' <proc_map_lst> ']'
+#                  <keysym> ':' <command>          | <keysym> '->' ':' <command>
+#                  <keysym> ';' <mode>             | <keysym> '->' ';' <mode>
+#
+#   keysym       = <mod> '-' <key> | <key>
+#
+#   mod          = 'modifier keyword' | <mod> '+' <mod>
+#
+#   key          = <literal> | <keycode>
+#
+#   literal      = 'single letter or built-in keyword'
+#
+#   keycode      = 'apple keyboard kVK_<Key> values (0x3C)'
+#
+#   proc_map_lst = * <proc_map>
+#
+#   proc_map     = <string> ':' <command> | <string>     '~' |
+#                  '*'      ':' <command> | '*'          '~'
+#
+#   string       = '"' 'sequence of characters' '"'
+#
+#   command      = command is executed through '$SHELL -c' and
+#                  follows valid shell syntax. if the $SHELL environment
+#                  variable is not set, it will default to '/bin/bash'.
+#                  when bash is used, the ';' delimiter can be specified
+#                  to chain commands.
+#
+#                  to allow a command to extend into multiple lines,
+#                  prepend '\' at the end of the previous line.
+#
+#                  an EOL character signifies the end of the bind.
+#
+#   ->           = keypress is not consumed by skhd
+#
+#   *            = matches every application not specified in <proc_map_lst>
+#
+#   ~            = application is unbound and keypress is forwarded per usual, when specified in a <proc_map>
+#
+# A mode is declared according to the following rules:
+#
+#   mode_decl = '::' <name> '@' ':' <command> | '::' <name> ':' <command> |
+#               '::' <name> '@'               | '::' <name>
+#
+#   name      = desired name for this mode,
+#
+#   @         = capture keypresses regardless of being bound to an action
+#
+#   command   = command is executed through '$SHELL -c' and
+#               follows valid shell syntax. if the $SHELL environment
+#               variable is not set, it will default to '/bin/bash'.
+#               when bash is used, the ';' delimiter can be specified
+#               to chain commands.
+#
+#               to allow a command to extend into multiple lines,
+#               prepend '\' at the end of the previous line.
+#
+#               an EOL character signifies the end of the bind.
 
-hyper - 0x32 : ~/.config/skhd/scripts/focus_recent_toggle_zoom.sh
+# ############################################################### #
+# THE FOLLOWING SECTION CONTAIN SIMPLE MAPPINGS DEMONSTRATING HOW #
+# TO INTERACT WITH THE YABAI WM. THESE ARE SUPPOSED TO BE USED AS #
+# A REFERENCE ONLY, WHEN MAKING YOUR OWN CONFIGURATION..          #
+# ############################################################### #
 
-# use wasd for focus window the alt hjkl was used for tumux and vim
-hyper - a: yabai -m window --focus west
-hyper - s : yabai -m window --focus south
-hyper - w : yabai -m window --focus north
-hyper - d : yabai -m window --focus east
+
+
+# use hjkl for focus window
+alt - h : yabai -m window --focus west
+alt - j : yabai -m window --focus south
+alt - k : yabai -m window --focus north
+alt - l : yabai -m window --focus east
+
+
+# alt + numbers to switch spaces
+alt - 1 : yabai -m space --focus 1
+alt - 2 : yabai -m space --focus 2
+alt - 3 : yabai -m space --focus 3
+alt - 4 : yabai -m space --focus 4
+alt - 5 : yabai -m space --focus 5
+alt - 6 : yabai -m space --focus 6
+alt - 7 : yabai -m space --focus 7
+alt - 8 : yabai -m space --focus 8
+alt - 9 : yabai -m space --focus 9
+# alt - f : yabai -m space --layout float
+# alt - b : yabai -m space --layout bsp
+
+# alt + ` to focus recent 
+alt - 0x32 : yabai -m space --focus recent
+# alt + [] to focux prev/next space
+alt - 0x21 : yabai -m space --focus prev || yabai -m space --focus last
+alt - 0x1E : yabai -m space --focus next || yabai -m space --focus first
+
+
+# rotate space
+alt - r : yabai -m space --rotate 90
+
+# mirror y axis
+alt - y : yabai -m space --mirror y-axis
+
+# mirror x axis
+alt - x : yabai -m space --mirror x-axis
+
+# alt + f  toggle fullscreen
+alt - f : yabai -m window --toggle zoom-fullscreen
 
 # toggle window split type
-hyper - e : yabai -m window --toggle split
+# alt + / 
+alt - 0x2C : yabai -m window --toggle split
+
 
 # Moving windows
 shift + alt - h : yabai -m window --warp west
@@ -22,81 +128,58 @@ shift + alt - j : yabai -m window --warp south
 shift + alt - k : yabai -m window --warp north
 shift + alt - l : yabai -m window --warp east
 
-# Move focus container to workspace
-shift + alt - 0x21 : yabai -m window --space prev && yabai -m space --focus prev
-shift + alt - 0x1E : yabai -m window --space next && yabai -m space --focus next
-shift + alt - 1 : yabai -m window --space 1 && yabai -m space --focus 1
-shift + alt - 2 : yabai -m window --space 2 && yabai -m space --focus 2
-shift + alt - 3 : yabai -m window --space 3 && yabai -m space --focus 3
-shift + alt - 4 : yabai -m window --space 4 && yabai -m space --focus 4
-shift + alt - 5 : yabai -m window --space 5 && yabai -m space --focus 5
-shift + alt - 6 : yabai -m window --space 6 && yabai -m space --focus 6
-shift + alt - 7 : yabai -m window --space 7 && yabai -m space --focus 7
-shift + alt - 8 : yabai -m window --space 8 && yabai -m space --focus 8
-shift + alt - 9 : yabai -m window --space 9 && yabai -m space --focus 9
-shift + alt - 0 : yabai -m window --space 0 && yabai -m space --focus 0
+# alt + [] to move window to prev/next in space
+shift + alt - 0x21 : ~/.config/skhd/scripts/swap_window_next.sh
+shift + alt - 0x1E : ~/.config/skhd/scripts/swap_window_prev.sh
 
-# Focus workspace
+# Moving windows to specific spaces
+hyper - 1 : ~/.config/skhd/scripts/move_window_to_space.sh 1
+hyper - 2 : ~/.config/skhd/scripts/move_window_to_space.sh 2
+hyper - 3 : ~/.config/skhd/scripts/move_window_to_space.sh 3
+hyper - 4 : ~/.config/skhd/scripts/move_window_to_space.sh 4
+hyper - 5 : ~/.config/skhd/scripts/move_window_to_space.sh 5
+hyper - 6 : ~/.config/skhd/scripts/move_window_to_space.sh 6
+hyper - 7 : ~/.config/skhd/scripts/move_window_to_space.sh 7
+hyper - 8 : ~/.config/skhd/scripts/move_window_to_space.sh 8
+hyper - 9 : ~/.config/skhd/scripts/move_window_to_space.sh 9
+
+
+# toggle window bsd or stack 
+alt - s : ~/.config/skhd/scripts/toggle_window_bsd_stack.sh && /opt/homebrew/bin/top_bar --trigger layout_changed 
+alt - n : yabai -m window --focus stack.next || yabai -m window --focus stack.first
+alt - p : yabai -m window --focus stack.prev || yabai -m window --focus stack.last
+
+
+::default : /opt/homebrew/bin/top_bar --trigger skhd_mode_change MODE=default
+::service : /opt/homebrew/bin/top_bar --trigger skhd_mode_change MODE=service
+
+default < hyper - space ; service
 #
+service < escape ; default
+#
+service < return ; default
 
-#0x1E ]
-#0x21 [
-hyper - 0x21 : yabai -m space --focus prev || yabai -m space --focus last
-hyper - 0x1E : yabai -m space --focus next || yabai -m space --focus first
-hyper - 1 : yabai -m space --focus 1
-hyper - 2 : yabai -m space --focus 2
-hyper - 3 : yabai -m space --focus 3
-hyper - 4 : yabai -m space --focus 4
-hyper - 5 : yabai -m space --focus 5
-hyper - 6 : yabai -m space --focus 6
-hyper - 7 : yabai -m space --focus 7
-hyper - 8 : yabai -m space --focus 8
-hyper - 9 : yabai -m space --focus 9
-hyper - f : yabai -m space --layout float
-hyper - b : yabai -m space --layout bsp
+service < ctrl - c ; default
 
-# Resize windows
-lctrl + alt - h : \
-    yabai -m window --resize left:-20:0 ; \
-    yabai -m window --resize right:-20:0
-
-lctrl + alt - j : \
-    yabai -m window --resize bottom:0:20 ; \
-    yabai -m window --resize top:0:20
-
-lctrl + alt - k : \
-    yabai -m window --resize top:0:-20 ; \
-    yabai -m window --resize bottom:0:-20
-
-lctrl + alt - l : \
-    yabai -m window --resize right:20:0 ; \
-    yabai -m window --resize left:20:0
-
-# Equalize size of windows
-hyper - 0 : yabai -m space --balance
-
-# Enable / Disable gaps in current workspace
-hyper - g : yabai -m space --toggle padding; yabai -m space --toggle gap
+service < h : yabai -m window --resize left:-20:0  ||  yabai -m window --resize right:-20:0 
+service < j : yabai -m window --resize bottom:0:20  ||  yabai -m window --resize top:0:20
+service < k : yabai -m window --resize top:0:20   ||  yabai -m window --resize bottom:0:20
+service < l : yabai -m window --resize right:20:0   ||  yabai -m window --resize left:20:0
 
 
-# Float and center window
-hyper - c : yabai -m window --toggle float;\
-                  yabai -m window --grid 4:4:1:1:2:2
+service < b : yabai -m space --layout bsp && /opt/homebrew/bin/top_bar --trigger layout_changed && skhd -k 'escape' 
+service < f : yabai -m space --layout float  && /opt/homebrew/bin/top_bar --trigger layout_changed && skhd -k 'escape' 
+service < s : yabai -m space --layout stack && /opt/homebrew/bin/top_bar --trigger layout_changed && skhd -k 'escape' 
 
-# Rotate windows clockwise and anticlockwise
-hyper - r : yabai -m space --rotate 270
 
-# Rotate on X and Y Axis
-hyper - x : yabai -m space --mirror x-axis
-hyper - y : yabai -m space --mirror y-axis
+service < 1 :  yabai -m space --focus 1 && skhd -k 'escape' 
+service < 2 :  yabai -m space --focus 2 && skhd -k 'escape' 
+service < 3 :  yabai -m space --focus 3 && skhd -k 'escape' 
+service < 4 :  yabai -m space --focus 4 && skhd -k 'escape' 
+service < 5 :  yabai -m space --focus 5 && skhd -k 'escape' 
+service < 6 :  yabai -m space --focus 6 && skhd -k 'escape' 
+service < 7 :  yabai -m space --focus 7 && skhd -k 'escape' 
+service < 8 :  yabai -m space --focus 8 && skhd -k 'escape' 
+service < 9 :  yabai -m space --focus 9 && skhd -k 'escape' 
 
-# Float / Unfloat window
-hyper - t : yabai -m window --toggle float
-
-# Toggle window fullscreen
-hyper - z       : yabai -m window --toggle zoom-fullscreen
-
-# hyper -n  : yabai -m space --create && yabai -m space --focus last
-
-# hyper -w  : yabai -m space --destroy
-
+# service < h 

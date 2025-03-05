@@ -6,7 +6,6 @@ TERM = "tmux-256color"
 save_to_clipboard = true
 semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 
-
 [window]
 decorations = "buttonless"
 dynamic_padding = true

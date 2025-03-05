@@ -1,0 +1,44 @@
+#!/usr/bin/env lua
+
+-- This is only needed once to install the sketchybar module
+-- (or for an update of the module)
+os.execute(
+	"[ ! -d $HOME/.local/share/sketchybar_lua/ ] && (git clone https://github.com/FelixKratz/SbarLua.git /tmp/SbarLua && cd /tmp/SbarLua/ && make install && rm -rf /tmp/SbarLua/)"
+)
+
+os.execute(
+	"[ ! -f $HOME/.local/share/sketchybar_lua/stats_provider ] && (git clone https://github.com/joncrangle/sketchybar-system-stats.git /tmp/sketchybar-system-stats && cd /tmp/sketchybar-system-stats &&  cargo build --release && cp target/release/stats_provider $HOME/.local/share/sketchybar_lua/stats_provider && rm -rf /tmp/sketchybar-system-stats/ )"
+)
+
+-- Add the sketchybar module to the package cpath (the module could be
+-- installed into the default search path then this would not be needed)
+package.cpath = package.cpath .. ";/Users/" .. os.getenv("USER") .. "/.local/share/sketchybar_lua/?.so"
+
+local initialize = require("bar")
+-- Require the sketchybar module
+Bar = require("sketchybar")
+
+-- Bundle the entire initial configuration into a single message to sketchybar
+-- This improves startup times drastically, try removing both the begin and end
+-- config calls to see the difference -- yeah..
+Bar.begin_config()
+initialize("top_bar")
+require("default")
+require("events")
+require("items.apple")
+-- require("items.front_app")
+require("items.spaces")
+require("items.state")
+require("items.toggle")
+require("items.window_title")
+require("items.time")
+require("items.brew")
+require("items.vpn")
+require("items.wifi")
+require("items.layout")
+require("items.skhd_mode")
+Bar.hotload(true)
+Bar.end_config()
+-- Run the event loop of the sketchybar module (without this there will be no
+-- callback functions executed in the lua module)
+Bar.event_loop()
