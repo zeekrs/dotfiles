@@ -1,3 +1,4 @@
+local colors = require("colors")
 local sources = {
 	"com.apple.keylayout.ABC",
 	"com.apple.inputmethod.SCIM.ITABC",
@@ -6,7 +7,7 @@ local sources = {
 local inputsource = Bar.add("alias", "TextInputMenuAgent", {
 	position = "right",
 	alias = {
-		-- color = colors.red,
+		color = colors.text,
 	},
 	icon = {
 		drawing = false,

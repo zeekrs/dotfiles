@@ -35,5 +35,3 @@ end)
 github:subscribe({ "mouse.clicked" }, function()
 	Bar.exec("open https://github.com/notifications")
 end)
-
-update()

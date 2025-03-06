@@ -1,10 +1,11 @@
 local settings = require("settings")
+local colors = require("colors")
 local get_app_label = require("utils.get_app_label")
 local wechat = Bar.add("item", {
 	position = "right",
 	icon = {
 		string = "󰘑",
-		color = 0xff2fb608,
+		color = colors.green,
 		font = {
 			family = settings.font.nerd,
 		},
@@ -14,7 +15,7 @@ local wechat = Bar.add("item", {
 			family = settings.font.numbers,
 		},
 	},
-	update_freq = 6,
+	update_freq = 3,
 })
 
 local function update()
@@ -36,5 +37,3 @@ wechat:subscribe("mouse.clicked", function()
 		open -a Wechat
 	]])
 end)
-
-update()

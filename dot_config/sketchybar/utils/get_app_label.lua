@@ -1,4 +1,4 @@
-local function get_label(name, callback)
+local function get_app_label(name, callback)
 	Bar.exec(
 		[[lsappinfo -all list | grep ...]]
 			.. name
@@ -16,14 +16,14 @@ local function get_label(name, callback)
 		end
 	)
 end
-local function get_app_label(name, callback)
+local function app_label(name, callback)
 	Bar.exec("lsappinfo -all list | grep " .. name .. ">> /dev/null;", function(_, exit_code)
 		if exit_code == 0 then
-			get_label(name, callback)
+			get_app_label(name, callback)
 		else
 			callback("?")
 		end
 	end)
 end
 
-return get_app_label
+return app_label

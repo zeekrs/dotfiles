@@ -6,3 +6,6 @@
 if vim.fn.executable("volta") then
   vim.g.node_host_prog = vim.fn.trim(vim.fn.system("volta which neovim-node-host"))
 end
+
+-- set cursor block
+vim.opt.guicursor = "n-v-ve-o-i-c-ci-sm:block,r-cr:hor20"

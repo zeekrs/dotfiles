@@ -15,7 +15,7 @@ local email = Bar.add("item", {
 			family = settings.font.numbers,
 		},
 	},
-	update_freq = 6,
+	update_freq = 3,
 })
 
 local function update()
@@ -37,5 +37,3 @@ email:subscribe("mouse.clicked", function()
 		open -a Spark
 	]])
 end)
-
-update()

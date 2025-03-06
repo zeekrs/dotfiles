@@ -9,7 +9,7 @@ local vpn = Bar.add("item", "vpn", {
 	},
 	label = {
 		font = {
-			family = settings.font.nerd,
+			family = settings.nerd_font,
 			size = settings.icon_size,
 			style = settings.font.style_map["Bold"],
 		},

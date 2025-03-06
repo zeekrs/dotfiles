@@ -88,7 +88,10 @@ setup_space 5 database
 setup_space 6 email
 setup_space 7 music
 setup_space 8 play
-setup_space 9 document
+setup_space 9 others
+
+# others default float layout
+yabai -m config --space 9 layout float
 
 ## Rules
 
@@ -97,7 +100,7 @@ yabai -m rule --add app='^(系统信息|System Information)$' manage=off sticky=
 yabai -m rule --add app='^(活动监视器|Activity Monitor)$' manage=off sticky=on sub-layer=above
 yabai -m rule --add app='^(访达|Finder)$' manage=off sub-layer=normal
 yabai -m rule --add app='^(计算器|Calculator)$' manage=off sub-layer=normal
-yabai -m rule --add app='^(App Store)$' manage=off sub-layer=normal
+yabai -m rule --add app='^(App Store)$' manage=off sticky=on sub-layer=above
 yabai -m rule --add label="^Software Update$" title="Software Update$" manage=off sub-layer=normal
 
 yabai -m rule --add app='^1Password$' manage=off sticky=on sub-layer=above
@@ -112,15 +115,17 @@ yabai -m rule --add app='^(微信|WeChat)$' manage=off sticky=on sub-layer=norma
 yabai -m rule --add app='^(QQ)$' manage=off sticky=on sub-layer=normal
 yabai -m rule --add app='^Telegram$' manage=off sticky=on sub-layer=normal
 yabai -m rule --add app='^Discord$' manage=off sticky=off sub-layer=normal
-yabai -m rule --add app='^腾讯会议$' manage=off sticky=off sub-layer=normal
+yabai -m rule --add app='^腾讯会议$' manage=off sticky=off sub-layer=normal space=^9
 
 yabai -m rule --add app='^Alacritty$' space=^1
+# use arc for default browser & use chrome for dev tools
 yabai -m rule --add app='^(Arc|Google Chrome|Safari浏览器)$' space=^2
+yabai -m rule --add app='^(Google Chrome)$' space=^4
 yabai -m rule --add app='^Cursor$' space=^3
 yabai -m rule --add app='^微信开发者工具$' space=^4
-yabai -m rule --add app='^(TablePlus|Navicat Premium)$' space=^5
+yabai -m rule --add app='^(TablePlus|Navicat Premium|Another Redis Desktop Manager)$' space=^5
 yabai -m rule --add app='^Spark$' space=^6
-yabai -m rule --add app='^网易云音乐$' space=^7
+yabai -m rule --add app='^网易云音乐$' manage=on space=^7
 
 jetbrainsApps='^(IntelliJ IDEA|PyCharm|WebStorm|GoLand)$'
 # must be set setting >> appearance and behavior >> always show full path in the window title is enabled

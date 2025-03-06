@@ -17,6 +17,7 @@ require("default")
 require("events")
 require("items.volume")
 require("items.mic")
+require("items.airpods")
 require("items.music")
 require("items.windows")
 

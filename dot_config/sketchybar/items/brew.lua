@@ -39,5 +39,3 @@ end
 brew:subscribe({ "brew_update" }, function()
 	update()
 end)
-
-update()

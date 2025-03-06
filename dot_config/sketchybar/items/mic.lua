@@ -26,7 +26,7 @@ local mic_icon = Bar.add("item", "mic.icon", {
 })
 
 local mic_slider = Bar.add("slider", "mic.slider", 100, {
-	update_freq = 1,
+	update_freq = 3,
 	updates = true,
 	label = { drawing = false },
 	icon = { drawing = false },

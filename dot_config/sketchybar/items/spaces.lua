@@ -9,15 +9,15 @@ local swap_observer = Bar.add("item", {
 })
 
 local icons = {
-	"", -- terminal
-	"󰊯", -- browser
-	"󰕷", -- work
+	"", -- terminal
+	"", -- browser
+	"", -- work
 	"", -- debug
 	"󰆼", -- database
 	"󰇮", -- email
 	"󰎆", -- music
-	" ", -- play
-	"󰈙", -- document
+	"", --play
+	"", -- others
 }
 
 local start_place = Bar.add("item", {
