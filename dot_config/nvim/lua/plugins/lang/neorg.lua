@@ -17,7 +17,6 @@ return {
     event = { "BufReadPre *.norg", "BufNewFile *.norg" },
     enabled = true,
     keys = {
-      { "<leader>o", "", desc = "+org" },
       { "<leader>on", "<Plug>(neorg.dirman.new-note)", desc = "Create New Note" },
       { "<leader>ow", "<cmd>Telescope neorg switch_workspace<CR>", desc = "Switch Workspace" },
       { "<leader>of", "<cmd>Telescope neorg find_norg_files<CR>", desc = "Find Files" },
