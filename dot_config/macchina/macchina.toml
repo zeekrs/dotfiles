@@ -1,1 +1,6 @@
 theme = "Mocha"
+interface = "en1"
+long_shell = false
+long_uptime = true
+long_kernel = true
+memory_percentage = true
