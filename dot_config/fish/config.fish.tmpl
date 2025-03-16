@@ -10,6 +10,9 @@ if status is-interactive
     orb completion fish | source
 
     hostctl completion fish | source
+
+    thefuck --alias | source
+
 end
 
 # Lang 
@@ -35,7 +38,7 @@ set -x OPENAI_API_MODEL {{ .openai_api_model }}
 {{end}}
 
 # config file
-set -Ux XDG_CONFIG_HOME "$HOME/.config"
+set -x XDG_CONFIG_HOME "$HOME/.config"
 
 # ripgrep
 set -x RIPGREP_CONFIG_PATH "$XDG_CONFIG_HOME/ripgrep/ripgreprc"

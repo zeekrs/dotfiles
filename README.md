@@ -93,6 +93,8 @@
   Python packaging and dependency management made easy
 - [gost](https://github.com/go-gost/gost)
   GO Simple Tunnel - a simple tunnel written in golang
+- [thefuck](https://github.com/nvbn/thefuck)
+  Magnificent app which corrects your previous console command.
 
 ### Installation
 
