@@ -10,7 +10,7 @@ alias l.='eza -a | egrep "^\."'
 
 alias sed=gsed
 
-alias cat=bat
+alias cat='bat --paging=never'
 
 alias cdtmp='cd $(mktemp -d /tmp/zeekrs-XXXXXX)'
 

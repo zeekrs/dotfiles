@@ -2,6 +2,8 @@
 
 ## zeekrs' dot files - management by [chezmoi](https://chezmoi.io/)
 
+![screenshot](./assets/screenshot.png)
+
 ### tool set
 
 - [fish shell](https://github.com/fish-shell/fish-shell) -

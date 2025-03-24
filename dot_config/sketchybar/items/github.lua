@@ -15,7 +15,7 @@ local github = Bar.add("item", {
 			family = settings.font.numbers,
 		},
 	},
-	update_freq = 180,
+	update_freq = 6,
 })
 
 local function update()

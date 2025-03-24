@@ -46,3 +46,5 @@ fish_add_path "/Users/zeekrs/Library/Application Support/JetBrains/Toolbox/scrip
 
 #conda
 fish_add_path /opt/homebrew/anaconda3/bin
+
+fish_add_path /opt/homebrew/opt/mysql-client/bin

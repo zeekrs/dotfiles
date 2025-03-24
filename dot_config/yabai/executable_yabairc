@@ -104,6 +104,7 @@ yabai -m rule --add app='^(App Store)$' manage=off sticky=on sub-layer=above
 yabai -m rule --add label="^Software Update$" title="Software Update$" manage=off sub-layer=normal
 
 yabai -m rule --add app='^1Password$' manage=off sticky=on sub-layer=above
+yabai -m rule --add app='^Bitwarden$' manage=off sticky=on sub-layer=above
 yabai -m rule --add app='^Raycast$' manage=off sticky=on sub-layer=above
 yabai -m rule --add app='^ClashX$' manage=off sticky=on sub-layer=above
 yabai -m rule --add app='^EasyConnect$' manage=off sticky=on sub-layer=normal
