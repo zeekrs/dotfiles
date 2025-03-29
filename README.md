@@ -91,8 +91,8 @@
   Fast, light, simple Docker containers & Linux machines for macOS
 - [translate-shell](https://github.com/soimort/translate-shell)
   Command-line translator using Google Translate, Bing Translator, Yandex.Translate, etc.
-- [poetry](https://github.com/python-poetry/poetry)
-  Python packaging and dependency management made easy
+- [uv](https://github.com/astral-sh/uv)
+- An extremely fast Python package and project manager
 - [gost](https://github.com/go-gost/gost)
   GO Simple Tunnel - a simple tunnel written in golang
 - [thefuck](https://github.com/nvbn/thefuck)
