@@ -95,6 +95,7 @@ alt - 6 : yabai -m space --focus 6
 alt - 7 : yabai -m space --focus 7
 alt - 8 : yabai -m space --focus 8
 alt - 9 : yabai -m space --focus 9
+alt - 0 : yabai -m space --focus 10
 # alt - f : yabai -m space --layout float
 # alt - b : yabai -m space --layout bsp
 
@@ -181,5 +182,6 @@ service < 6 :  yabai -m space --focus 6 && skhd -k 'escape'
 service < 7 :  yabai -m space --focus 7 && skhd -k 'escape' 
 service < 8 :  yabai -m space --focus 8 && skhd -k 'escape' 
 service < 9 :  yabai -m space --focus 9 && skhd -k 'escape' 
+service < 0 :  yabai -m space --focus 10 && skhd -k 'escape' 
 
 # service < h 

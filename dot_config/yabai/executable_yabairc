@@ -83,15 +83,16 @@ function setup_space() {
 setup_space 1 terminal
 setup_space 2 browser
 setup_space 3 work
-setup_space 4 debug
-setup_space 5 database
-setup_space 6 email
+setup_space 4 code
+setup_space 5 message
+setup_space 6 play
 setup_space 7 music
-setup_space 8 play
-setup_space 9 others
+setup_space 8 notes
+setup_space 9 database
+setup_space 10 debug
 
 # others default float layout
-yabai -m config --space 9 layout float
+yabai -m config --space 6 layout float
 
 ## Rules
 
@@ -107,26 +108,27 @@ yabai -m rule --add app='^1Password$' manage=off sticky=on sub-layer=above
 yabai -m rule --add app='^Bitwarden$' manage=off sticky=on sub-layer=above
 yabai -m rule --add app='^Raycast$' manage=off sticky=on sub-layer=above
 yabai -m rule --add app='^ClashX$' manage=off sticky=on sub-layer=above
-yabai -m rule --add app='^EasyConnect$' manage=off sticky=on sub-layer=normal
+yabai -m rule --add app='^EasyConnect$' manage=off sticky=on sub-layer=normal space=^6
 yabai -m rule --add app='^CleanShot X$' manage=off sticky=on sub-layer=above
 yabai -m rule --add app='^Logi Options+$' manage=off sticky=on sub-layer=above
 yabai -m rule --add app='^The Unarchiver$' manage=off sticky=on sub-layer=above
 yabai -m rule --add app='^(Karabiner-Elements|Karabiner-EventViewer)$' manage=off sticky=on sub-layer=above
 yabai -m rule --add app='^(微信|WeChat)$' manage=off sticky=on sub-layer=normal
 yabai -m rule --add app='^(QQ)$' manage=off sticky=on sub-layer=normal
-yabai -m rule --add app='^Telegram$' manage=off sticky=on sub-layer=normal
+yabai -m rule --add app='^Telegram$' manage=off sticky=off sub-layer=normal space=^5
 yabai -m rule --add app='^Discord$' manage=off sticky=off sub-layer=normal
-yabai -m rule --add app='^腾讯会议$' manage=off sticky=off sub-layer=normal space=^9
+yabai -m rule --add app='^腾讯会议$' manage=off sticky=off sub-layer=normal space=^6
 
 yabai -m rule --add app='^Alacritty$' space=^1
 # use arc for default browser & use chrome for dev tools
-yabai -m rule --add app='^(Arc|Google Chrome|Safari浏览器)$' space=^2
-yabai -m rule --add app='^(Google Chrome)$' space=^4
+yabai -m rule --add app='^(Arc|Safari浏览器)$' space=^2
+yabai -m rule --add app='^(Google Chrome)$' space=^10
 yabai -m rule --add app='^Cursor$' space=^3
-yabai -m rule --add app='^微信开发者工具$' space=^4
-yabai -m rule --add app='^(TablePlus|Navicat Premium|Another Redis Desktop Manager)$' space=^5
-yabai -m rule --add app='^Spark$' space=^6
+yabai -m rule --add app='^微信开发者工具$' space=^10
+yabai -m rule --add app='^(TablePlus|Navicat Premium|Tiny RDM)$' space=^9
+yabai -m rule --add app='^Spark$' space=^5
 yabai -m rule --add app='^网易云音乐$' manage=on space=^7
+yabai -m rule --add app='^Obsidian$' manage=on space=^8
 
 jetbrainsApps='^(IntelliJ IDEA|PyCharm|WebStorm|GoLand)$'
 # must be set setting >> appearance and behavior >> always show full path in the window title is enabled
@@ -134,7 +136,7 @@ yabai -m rule --add app="^JetBrains Toolbox$" manage=off sub-layer=normal
 # yabai -m rule --add app="${jetbrainsApps}" manage=on
 yabai -m rule --add app="${jetbrainsApps}" manage=off
 
-yabai -m rule --add app="${jetbrainsApps}" title="^$" manage=on space=^3
+yabai -m rule --add app="${jetbrainsApps}" title="^$" manage=on space=^4
 
 yabai -m rule --apply
 
