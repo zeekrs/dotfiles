@@ -2,6 +2,7 @@ return {
   {
     "yetone/avante.nvim",
     event = "VeryLazy",
+    enabled = false,
     dependencies = {
       "stevearc/dressing.nvim",
       "ibhagwan/fzf-lua",
