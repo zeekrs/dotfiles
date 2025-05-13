@@ -116,6 +116,7 @@ yabai -m rule --add app='^(Karabiner-Elements|Karabiner-EventViewer)$' manage=of
 yabai -m rule --add app='^(微信|WeChat)$' manage=off sticky=on sub-layer=normal
 yabai -m rule --add app='^(QQ)$' manage=off sticky=on sub-layer=normal
 yabai -m rule --add app='^Telegram$' manage=off sticky=off sub-layer=normal space=^5
+yabai -m rule --add app='WhatsApp' manage=off sticky=off sub-layer=normal space=^5
 yabai -m rule --add app='^Discord$' manage=off sticky=off sub-layer=normal
 yabai -m rule --add app='^腾讯会议$' manage=off sticky=off sub-layer=normal space=^6
 
@@ -123,7 +124,7 @@ yabai -m rule --add app='^Alacritty$' space=^1
 # use arc for default browser & use chrome for dev tools
 yabai -m rule --add app='^(Arc|Safari浏览器)$' space=^2
 yabai -m rule --add app='^(Google Chrome)$' space=^10
-yabai -m rule --add app='^Cursor$' space=^3
+yabai -m rule --add app='^(Cursor|Code)$' space=^3
 yabai -m rule --add app='^微信开发者工具$' space=^10
 yabai -m rule --add app='^(TablePlus|Navicat Premium|Tiny RDM)$' space=^9
 yabai -m rule --add app='^Spark$' space=^5
