@@ -26,8 +26,8 @@
   Vim like Editor
 - [homebrew](https://github.com/Homebrew/brew) -
   The missing package manager for macOS
-- [volta](https://github.com/volta-cli/volta) -
-  JS Toolchains as Code. ⚡
+- [fnm](https://github.com/Schniz/fnm) -
+  🚀 Fast and simple Node.js version manager
 - [sdkman](https://github.com/sdkman/sdkman-cli) -
   Software Development Kit Manager Command Line Interface
 - [yazi](https://github.com/sxyazi/yazi) -
@@ -89,13 +89,13 @@
   Friendly and fast tool for sending HTTP requests
 - [orbstack](https://github.com/orbstack/orbstack) -
   Fast, light, simple Docker containers & Linux machines for macOS
-- [translate-shell](https://github.com/soimort/translate-shell)
+- [translate-shell](https://github.com/soimort/translate-shell) - 
   Command-line translator using Google Translate, Bing Translator, Yandex.Translate, etc.
-- [uv](https://github.com/astral-sh/uv)
-- An extremely fast Python package and project manager
-- [gost](https://github.com/go-gost/gost)
+- [uv](https://github.com/astral-sh/uv) - 
+  An extremely fast Python package and project manager
+- [gost](https://github.com/go-gost/gost) - 
   GO Simple Tunnel - a simple tunnel written in golang
-- [thefuck](https://github.com/nvbn/thefuck)
+- [thefuck](https://github.com/nvbn/thefuck) - 
   Magnificent app which corrects your previous console command.
 
 ### Installation

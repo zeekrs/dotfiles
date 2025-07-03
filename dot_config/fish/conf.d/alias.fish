@@ -8,9 +8,7 @@ alias ll='eza -la --color=always --icons --group-directories-first'
 alias lt='eza -aT --color=always --icons --group-directories-first'
 alias l.='eza -a | egrep "^\."'
 
-alias sed=gsed
-
-alias cat='bat --paging=never'
+# alias sed=gsed
 
 alias cdtmp='cd $(mktemp -d /tmp/zeekrs-XXXXXX)'
 
