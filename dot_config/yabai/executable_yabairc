@@ -107,7 +107,7 @@ yabai -m rule --add label="^Software Update$" title="Software Update$" manage=of
 yabai -m rule --add app='^1Password$' manage=off sticky=on sub-layer=above
 yabai -m rule --add app='^Bitwarden$' manage=off sticky=on sub-layer=above
 yabai -m rule --add app='^Raycast$' manage=off sticky=on sub-layer=above
-yabai -m rule --add app='^ClashX$' manage=off sticky=on sub-layer=above
+yabai -m rule --add app='^(ClashX|Clash Verge)$' manage=off sticky=on sub-layer=above
 yabai -m rule --add app='^EasyConnect$' manage=off sticky=on sub-layer=normal space=^6
 yabai -m rule --add app='^CleanShot X$' manage=off sticky=on sub-layer=above
 yabai -m rule --add app='^Logi Options+$' manage=off sticky=on sub-layer=above

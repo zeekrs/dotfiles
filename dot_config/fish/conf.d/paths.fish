@@ -3,6 +3,7 @@
 #
 # homebrew 
 fish_add_path fish_user_paths /opt/homebrew/bin
+fish_add_path /opt/homebrew/opt/libpq/bin
 
 # volta
 fish_add_path fish_user_paths "$HOME/.volta/bin"
@@ -42,9 +43,9 @@ fish_add_path "$HOME/.krew/bin"
 # fish_add_path /opt/homebrew/opt/ruby/bin
 
 #jet brains ide
-fish_add_path "/Users/zeekrs/Library/Application Support/JetBrains/Toolbox/scripts"
+fish_add_path "$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
 
-#conda
-# fish_add_path /opt/homebrew/anaconda3/bin
+# cargo
+fish_add_path "$HOME/.cargo/bin"
 
 # fish_add_path /opt/homebrew/opt/mysql-client/bin
