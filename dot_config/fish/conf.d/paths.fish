@@ -5,9 +5,6 @@
 fish_add_path fish_user_paths /opt/homebrew/bin
 fish_add_path /opt/homebrew/opt/libpq/bin
 
-# volta
-fish_add_path fish_user_paths "$HOME/.volta/bin"
-
 fish_add_path fish_user_paths "$HOME/.local/bin"
 
 # go 
