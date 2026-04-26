@@ -45,4 +45,5 @@ fish_add_path "$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
 # cargo
 fish_add_path "$HOME/.cargo/bin"
 
+fish_add_path "$HOME/.opencode/bin"
 # fish_add_path /opt/homebrew/opt/mysql-client/bin

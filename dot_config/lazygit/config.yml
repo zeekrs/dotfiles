@@ -19,14 +19,12 @@ gui:
       - "#cdd6f4"
     searchingActiveBorderColor:
       - "#f9e2af"
-
   authorColors:
     "*": "#b4befe"
 git:
-  paging:
-    colorArg: always
-    pager: delta --dark --paging=never
-
+  pagers:
+    - colorArg: always
+      pager: delta --dark --paging=never
 promptToReturnFromSubprocess: false
 keybinding:
   files:
@@ -54,10 +52,10 @@ customCommands:
     description: "commit with commitizen"
     context: "files"
     loadingText: "opening commitizen commit tool"
-    subprocess: true
+    output: terminal
   - key: "C"
     command: "git czg ai"
     description: "commit with AI commitizen"
     context: "files"
     loadingText: "opening commitizen AI commit tool"
-    subprocess: true
+    output: terminal

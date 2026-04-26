@@ -1,0 +1,4 @@
+config-file = fonts.config
+config-file = theme.config
+config-file = terminal.config
+config-file = keybinds.config

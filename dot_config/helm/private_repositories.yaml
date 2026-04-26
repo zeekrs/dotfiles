@@ -46,3 +46,12 @@ repositories:
   password: ""
   url: https://devmachine-fr.github.io/cert-manager-alidns-webhook
   username: ""
+- caFile: ""
+  certFile: ""
+  insecure_skip_tls_verify: false
+  keyFile: ""
+  name: grafana
+  pass_credentials_all: false
+  password: ""
+  url: https://grafana.github.io/helm-charts
+  username: ""
