@@ -1,0 +1,7 @@
+**/.DS_Store
+README.md
+Brewfile
+
+# neovim
+.config/nvim/lazy-lock.json
+

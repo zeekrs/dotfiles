@@ -1,0 +1,12 @@
+spacing = 2
+padding = 0
+hide_ascii = false
+prefer_small_ascii = false
+separator = "->"
+key_color = "Yellow"
+separator_color = "Blue"
+
+[palette]
+visible = true
+type = "Dark"
+glyph = "  ●  "

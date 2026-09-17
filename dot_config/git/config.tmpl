@@ -1,0 +1,32 @@
+[include]
+  path = ./themes.gitconfig
+[user]
+# Please adapt and uncomment the following lines:
+	name = {{ .chezmoi.username }}
+	email = {{ .email }}
+[pull]
+	rebase = false
+[push]
+	default = current
+	autoSetupRemote = true
+[init]
+	defaultBranch = main
+[core]
+	excludesfile = ~/.config/git/ignore
+  pager = delta 
+[interactive]
+  diffFilter = delta --color-only --features=interactive
+[delta]
+  features = catppuccin-mocha
+  navigate = true
+  line-numbers = true
+  true-color = always
+
+[merge]
+    conflictstyle = zdiff3
+
+[diff]
+    colorMoved = default
+[diff "lockb"]
+	textconv = bun
+	binary = true
